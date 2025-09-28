@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
@@ -18,52 +19,56 @@
     home-manager,
     ...
   }:
+  let
+    system = "x86_64-linux";
+    
+    # Create an overlay that adds unstable packages to pkgs
+    overlay-unstable = final: prev: {
+      unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    };
+  in
   {
-      nixosConfigurations = {
-        msi = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit
-              nixpkgs
-              nixpkgs-unstable
-              home-manager
-              ;
-            unstable = import nixpkgs-unstable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-            stable = import nixpkgs {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
-          modules = [
-            ./hosts/msi/configuration.nix
-          ];
+    nixosConfigurations = {
+      msi = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit
+            nixpkgs
+            nixpkgs-unstable
+            home-manager
+          ;
         };
+        modules = [
+          # Apply the overlay to add pkgs.unstable
+          ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+          ./hosts/msi/configuration.nix
+        ];
       };
-      homeConfigurations = {
-        ulugbek = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit
-              nixpkgs
-              nixpkgs-unstable
-              ;
-            unstable = import nixpkgs-unstable {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-            stable = import nixpkgs {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          };
-          modules = [
-            ./home/ulugbek/home.nix
-          ];
+    };
+    
+    # Optional: Keep standalone home-manager configuration for testing
+    # You can remove this section if you only want to use home-manager through NixOS
+    homeConfigurations = {
+      ulugbek = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+          overlays = [ overlay-unstable ];
         };
+        extraSpecialArgs = {
+          inherit
+            nixpkgs
+            nixpkgs-unstable
+          ;
+        };
+        modules = [
+          ./home/ulugbek/home.nix
+        ];
       };
+    };
   };
 
 }

@@ -33,10 +33,17 @@
   # Enable CUPS for printing
   services.printing.enable = true;
 
-  home-manager.users.ulugbek = {
-    imports = [
-      # Reference the file you defined in your flake's homeConfigurations
-      ../../home/ulugbek/home.nix
-    ];
+  # Home Manager configuration
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      inherit pkgs;
+    };
+    users.ulugbek = {
+      imports = [
+        ../../home/ulugbek/home.nix
+      ];
+    };
   };
 }

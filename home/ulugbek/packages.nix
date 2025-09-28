@@ -1,11 +1,11 @@
-{ unstable, stable, ...}:
+{ pkgs, ...}:
 
 let
-  stablePackages = with stable; [
+  stablePackages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
 
-  unstablePackages = with unstable; [
+  unstablePackages = with pkgs.unstable; [
     telegram-desktop
     google-chrome
     vscode
