@@ -5,7 +5,7 @@
 {
   imports =
     [
-      ../../modules/hardware-configuration.nix
+      ./hardware-configuration.nix
       ../../modules/nix-settings.nix
       ../../modules/users.nix
       ../../modules/packages.nix
