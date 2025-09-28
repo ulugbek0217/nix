@@ -23,18 +23,19 @@
         msi = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inputs = {
-              inherit
-                nixpkgs
-                nixpkgs-unstable
-                home-manager
-                ;
-            };
             inherit
               nixpkgs
               nixpkgs-unstable
               home-manager
               ;
+            unstable = import nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+            stable = import nixpkgs {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
           };
           modules = [
             ./hosts/msi/configuration.nix

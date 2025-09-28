@@ -15,9 +15,9 @@
   home.stateVersion = "25.05";
 
   # Basic packages - add more as needed
-  home.packages = with pkgs; [
+  # home.packages = with pkgs; [
 
-  ];
+  # ];
 
   fonts.fontconfig.enable = true;
 

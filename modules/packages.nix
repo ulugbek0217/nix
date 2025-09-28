@@ -1,13 +1,13 @@
-{ pkgs, ... }:
+{ stable, unstable, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with stable; [
     vim
     wget
     git
-    go
-    python313
     gcc15
     ntfs3g
   ];
+
+  programs.firefox.enable = true;
 }

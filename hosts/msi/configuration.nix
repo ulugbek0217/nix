@@ -1,6 +1,6 @@
 # /etc/nixos/configuration.nix
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, home-manager, stable, unstable, ... }:
 
 {
   imports =
@@ -12,6 +12,7 @@
       ../../modules/audio.nix
       ../../modules/nvidia.nix
       ../../modules/desktop/gnome.nix
+      home-manager.nixosModules.home-manager
     ];
 
   # Bootloader
@@ -31,4 +32,11 @@
 
   # Enable CUPS for printing
   services.printing.enable = true;
+
+  home-manager.users.ulugbek = {
+    imports = [
+      # Reference the file you defined in your flake's homeConfigurations
+      ../../home/ulugbek/home.nix
+    ];
+  };
 }

@@ -1,13 +1,20 @@
 { unstable, stable, ...}:
 
-{
-  home.packages = with stable; [
+let
+  stablePackages = with stable; [
     nerd-fonts.jetbrains-mono
   ];
 
-  home.packages = with unstable; [
+  unstablePackages = with unstable; [
     telegram-desktop
     google-chrome
     vscode
+    go
+    python313
   ];
+
+in
+{
+  # Use list concatenation (++) here to merge the two lists
+  home.packages = stablePackages ++ unstablePackages;
 }
