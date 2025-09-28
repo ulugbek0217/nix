@@ -24,10 +24,10 @@
   # Internationalization
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Set hardware and swap configurations
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/fa8e363c-0520-411b-8fb8-0ff728ea79e9"; }
-  ];
+  # # Set hardware and swap configurations
+  # swapDevices = [
+  #   { device = "/dev/disk/by-uuid/fa8e363c-0520-411b-8fb8-0ff728ea79e9"; }
+  # ];
 
   # Enable CUPS for printing
   services.printing.enable = true;

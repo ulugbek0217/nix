@@ -9,6 +9,5 @@
     telegram-desktop
     google-chrome
     vscode
-    go
   ];
 }
