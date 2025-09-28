@@ -1,5 +1,5 @@
 {
-  description = "Enhanced NixOS configuration (flake) for acer";
+  description = "Enhanced NixOS configuration (flake) for msi";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -38,6 +38,28 @@
           };
           modules = [
             ./hosts/msi/configuration.nix
+          ];
+        };
+      };
+      homeConfigurations = {
+        ulugbek = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit
+              nixpkgs
+              nixpkgs-unstable
+              ;
+            unstable = import nixpkgs-unstable {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+            stable = import nixpkgs {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          };
+          modules = [
+            ./home/ulugbek/home.nix
           ];
         };
       };

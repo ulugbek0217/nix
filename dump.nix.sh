@@ -1,4 +1,4 @@
-#!/run/current-system/sw/bin/bash
+#!/usr/bin/bash
 
 # dump-nix.zsh
 # Concatenate all Nix-related files into test.nix.blank, excluding unwanted files/dirs.
@@ -17,7 +17,7 @@ if [[ -f flake.nix ]]; then
 fi
 
 # Find and append relevant files, excluding specified patterns
-find hosts modules \
+find home hosts modules \
   -type d \( -name .git -o -name node_modules -o -name .direnv -o -name .github \) -prune -o \
   -type f \
   ! -name 'README.md' \

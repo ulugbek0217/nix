@@ -7,6 +7,7 @@
     displayManager.gdm = {
       enable = true;
       wayland = true; # Explicitly enable Wayland
+      autoSuspend = false;
     };
     desktopManager.gnome = {
       enable = true;
