@@ -4,4 +4,7 @@
   # List your module files here
   # my-module = import ./my-module.nix;
   nixpkgs = import ./nixpkgs;
+  git = import ./git;
+  helix = import ./helix;
+  zed = import ./zed;
 }

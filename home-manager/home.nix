@@ -13,6 +13,9 @@
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
     outputs.homeModules.nixpkgs
+    outputs.homeModules.git
+    outputs.homeModules.helix
+    outputs.homeModules.zed
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 

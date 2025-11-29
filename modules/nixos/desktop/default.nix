@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   # Enable GNOME with Wayland
-  services = {
+  services.xserver = {
+    enable = true; # Still needed for compatibility with some applications
     displayManager.gdm = {
       enable = true;
       wayland = true; # Explicitly enable Wayland
@@ -10,12 +11,10 @@
       enable = true;
     };
 
-    xserver = {
-      enable = true; # you probably already have this, but keep it
-      xkb = {
-        layout = "us,ru";
-        options = "grp:alt_shift_toggle,grp:win_space_toggle,caps:escape,eurosign:e";
-      };
+    # Keyboard configuration
+    xkb = {
+      layout = "us,ru";
+      options = "grp:alt_shift_toggle,grp:win_space_toggle,caps:escape,eurosign:e";
     };
   };
 

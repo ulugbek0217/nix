@@ -8,4 +8,5 @@
   audio = import ./audio;
   nixpkgs = import ./nixpkgs;
   desktop = import ./desktop;
+  fonts = import ./fonts;
 }

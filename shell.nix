@@ -16,7 +16,6 @@ pkgs.stdenv.mkDerivation {
     git
     just
     sops
-    zed-editor
     # Latest statix
     statix
 
