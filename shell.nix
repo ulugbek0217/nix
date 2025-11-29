@@ -1,0 +1,36 @@
+{
+  pkgs ? let
+    lock = (builtins.fromJSON (builtins.readFile ./flake.lock)).nodes.nixpkgs.locked;
+    nixpkgs = fetchTarball {
+      url = "https://github.com/nixos/nixpkgs/archive/${lock.rev}.tar.gz";
+      sha256 = lock.narHash;
+    };
+  in
+    import nixpkgs {overlays = [];},
+  ...
+}:
+pkgs.stdenv.mkDerivation {
+  name = "nix";
+
+  nativeBuildInputs = with pkgs; [
+    git
+    just
+    sops
+    zed-editor
+    # Latest statix
+    statix
+
+    nixd
+    deadnix
+    alejandra
+  ];
+
+  # Bootstrapping commands
+  shellHook = ''
+    # Fetch latest changes
+    git pull
+  '';
+
+  # Nix related configurations
+  NIX_CONFIG = "extra-experimental-features = nix-command flakes pipe-operators";
+}

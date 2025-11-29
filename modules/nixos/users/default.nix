@@ -1,0 +1,3 @@
+{
+  ulugbek = import ./ulugbek.nix;
+}

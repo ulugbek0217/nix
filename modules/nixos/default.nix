@@ -3,4 +3,8 @@
 {
   # List your module files here
   # my-module = import ./my-module.nix;
+  boot = import ./boot;
+  users = import ./users;
+  audio = import ./audio;
+  nixpkgs = import ./nixpkgs;
 }
