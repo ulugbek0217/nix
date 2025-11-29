@@ -16,6 +16,7 @@
     outputs.nixosModules.users.ulugbek
     outputs.nixosModules.audio
     outputs.nixosModules.nixpkgs
+    outputs.nixosModules.desktop
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd

@@ -7,4 +7,5 @@
   users = import ./users;
   audio = import ./audio;
   nixpkgs = import ./nixpkgs;
+  desktop = import ./desktop;
 }
