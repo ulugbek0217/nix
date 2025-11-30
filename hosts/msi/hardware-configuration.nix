@@ -28,18 +28,18 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/0186951c-7df5-44b9-91f3-9d846976afcb";
+    device = "/dev/disk/by-uuid/626dd808-4b36-4503-b532-e977be3fcfa3";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/ED06-2D55";
+    device = "/dev/disk/by-uuid/7492-8979";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/25fe6210-4238-46fa-9ebd-8d41f555c5af";}
+    {device = "/dev/disk/by-uuid/e76e00ad-d714-4300-ab79-9149e755b0a1";}
   ];
 
   fileSystems."/mnt/hdd" = {

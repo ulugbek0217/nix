@@ -32,6 +32,15 @@
 
   # FIXME: Add the rest of your current configuration
 
+  # Configure home-manager
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+    extraSpecialArgs = {inherit inputs outputs;};
+    users.ulugbek = import ../../home-manager/home.nix;
+  };
+
   # TODO: Set your hostname
   networking = {
     hostName = "msi";

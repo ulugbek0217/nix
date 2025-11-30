@@ -12,7 +12,7 @@
   imports = [
     # If you want to use modules your own flake exports (from modules/home-manager):
     # inputs.self.homeManagerModules.example
-    outputs.homeModules.nixpkgs
+    # outputs.homeModules.nixpkgs
     outputs.homeModules.git
     outputs.homeModules.helix
     outputs.homeModules.zed
@@ -27,15 +27,17 @@
   home = {
     username = "ulugbek";
     homeDirectory = "/home/ulugbek";
+    sessionVariables = lib.mkForce {
+      XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
+    };
   };
 
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
+  # home.packages = with pkgs; [home-manager];
 
-  # Enable home-manager and git
+  # Enable home-manager
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
