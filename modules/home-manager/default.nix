@@ -7,4 +7,5 @@
   git = import ./git;
   helix = import ./helix;
   zed = import ./zed;
+  zsh = import ./zsh;
 }

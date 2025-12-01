@@ -16,6 +16,7 @@
     outputs.homeModules.git
     outputs.homeModules.helix
     outputs.homeModules.zed
+    outputs.homeModules.zsh
     # Or modules exported from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModules.default
 

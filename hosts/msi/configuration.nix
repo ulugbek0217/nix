@@ -17,6 +17,8 @@
     outputs.nixosModules.audio
     outputs.nixosModules.nixpkgs
     outputs.nixosModules.desktop
+    outputs.nixosModules.zsh
+    outputs.nixosModules.fonts
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -32,14 +34,7 @@
 
   # FIXME: Add the rest of your current configuration
 
-  # Configure home-manager
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs outputs;};
-    users.ulugbek = import ../../home-manager/home.nix;
-  };
+
 
   # TODO: Set your hostname
   networking = {

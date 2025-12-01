@@ -24,26 +24,26 @@
     };
 
     # Extra Features
-    setOptions = [
-      "AUTO_CD"
-      "BEEP"
-      "HIST_BEEP"
-      "HIST_EXPIRE_DUPS_FIRST"
-      "HIST_FIND_NO_DUPS"
-      "HIST_IGNORE_ALL_DUPS"
-      "HIST_IGNORE_DUPS"
-      "HIST_REDUCE_BLANKS"
-      "HIST_SAVE_NO_DUPS"
-      "HIST_VERIFY"
-      "INC_APPEND_HISTORY"
-      "INTERACTIVE_COMMENTS"
-      "MAGIC_EQUAL_SUBST"
-      "NO_NO_MATCH"
-      "NOTIFY"
-      "NUMERIC_GLOB_SORT"
-      "PROMPT_SUBST"
-      "SHARE_HISTORY"
-    ];
+    # setOptions = [
+    #   "AUTO_CD"
+    #   "BEEP"
+    #   "HIST_BEEP"
+    #   "HIST_EXPIRE_DUPS_FIRST"
+    #   "HIST_FIND_NO_DUPS"
+    #   "HIST_IGNORE_ALL_DUPS"
+    #   "HIST_IGNORE_DUPS"
+    #   "HIST_REDUCE_BLANKS"
+    #   "HIST_SAVE_NO_DUPS"
+    #   "HIST_VERIFY"
+    #   "INC_APPEND_HISTORY"
+    #   "INTERACTIVE_COMMENTS"
+    #   "MAGIC_EQUAL_SUBST"
+    #   "NO_NO_MATCH"
+    #   "NOTIFY"
+    #   "NUMERIC_GLOB_SORT"
+    #   "PROMPT_SUBST"
+    #   "SHARE_HISTORY"
+    # ];
 
     # ZSH Autosuggestions
     # The option `programs.zsh.enableAutosuggestions' defined in config
