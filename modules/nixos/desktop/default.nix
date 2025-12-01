@@ -1,25 +1,33 @@
 {pkgs, ...}: {
   # Enable GNOME with Wayland
   services.xserver = {
-    enable = true; # Still needed for compatibility with some applications
+    enable = true;
     displayManager.gdm = {
       enable = true;
-      wayland = true; # Explicitly enable Wayland
+      wayland = true;
       autoSuspend = false;
     };
     desktopManager.gnome = {
       enable = true;
     };
 
-    # Keyboard configuration
     xkb = {
       layout = "us,ru";
       options = "grp:alt_shift_toggle,grp:win_space_toggle,caps:escape,eurosign:e";
     };
   };
 
-  # Touchpad support
   services.libinput.enable = true;
+
+  # Critical: Enable dbus for proper desktop integration
+  services.dbus.enable = true;
+
+  # Ensure XDG portals are properly configured for GNOME
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    config.common.default = "*";
+  };
 
   # GNOME-specific packages
   environment.systemPackages = with pkgs; [
@@ -28,12 +36,20 @@
     dconf-editor
   ];
 
-  # Remove default GNOME applications not needed
   environment.gnome.excludePackages = with pkgs; [
-    epiphany # GNOME web browser (you have Firefox)
-    geary # Email client
+    epiphany
+    geary
     gnome-music
     gnome-photos
-    totem # Video player (you have VLC/MPV)
+    totem
   ];
+
+  # Ensure proper environment for desktop files
+  environment.sessionVariables = {
+    # These help GNOME find applications
+    XDG_DATA_DIRS = [
+      "/run/current-system/sw/share"
+      "$HOME/.nix-profile/share"
+    ];
+  };
 }

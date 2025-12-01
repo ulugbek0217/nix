@@ -1,5 +1,3 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 {
   inputs,
   lib,
@@ -8,42 +6,41 @@
   outputs,
   ...
 }: {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use modules your own flake exports (from modules/home-manager):
-    # inputs.self.homeManagerModules.example
-    # outputs.homeModules.nixpkgs
     outputs.homeModules.git
     outputs.homeModules.helix
     outputs.homeModules.zed
     outputs.homeModules.zsh
-    # Or modules exported from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModules.default
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
+    outputs.homeModules.nixpkgs
   ];
 
-  # TODO: Set your username
   home = {
     username = "ulugbek";
     homeDirectory = "/home/ulugbek";
-    sessionVariables = lib.mkForce {
-      XDG_DATA_DIRS = "$HOME/.nix-profile/share:$HOME/.local/share:/run/current-system/sw/share:/usr/share:/usr/local/share";
+
+    # Remove the mkForce override or adjust it to include home-manager paths
+    sessionVariables = {
+      # Let home-manager handle XDG_DATA_DIRS automatically
+      # If you need to add custom paths, append them instead of replacing
     };
+
+    # Move GUI applications here from ulugbek.nix
+    packages = with pkgs; [
+      telegram-desktop
+      discord
+      google-chrome
+      firefox
+      onlyoffice-desktopeditors
+      fastfetch
+    ];
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [home-manager];
+  # This is important for GNOME to find applications
+  targets.genericLinux.enable = false;
 
-  # Enable home-manager
   programs.home-manager.enable = true;
 
-  # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Do not touch
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "25.05";
 }
