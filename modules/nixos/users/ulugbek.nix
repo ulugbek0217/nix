@@ -6,7 +6,7 @@
 }: {
   users.users = {
     ulugbek = {
-      initialPassword = "111";
+      initialPassword = "chubbyCat";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [];
       extraGroups = ["wheel" "docker" "networkmanager"];

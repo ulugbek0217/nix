@@ -23,8 +23,8 @@ in {
           useOSProber = true;
           gfxmodeEfi = "${resolution},auto";
           gfxmodeBios = "${resolution},auto";
-          theme = theme-package;
-          splashImage = "${theme-package}/background.png";
+          # theme = theme-package;
+          # splashImage = "${theme-package}/background.png";
         };
       };
       plymouth = {

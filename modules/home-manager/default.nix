@@ -8,4 +8,5 @@
   helix = import ./helix;
   zed = import ./zed;
   zsh = import ./zsh;
+  dconf = import ./dconf;
 }

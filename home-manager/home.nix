@@ -11,7 +11,8 @@
     outputs.homeModules.helix
     outputs.homeModules.zed
     outputs.homeModules.zsh
-    outputs.homeModules.nixpkgs
+    outputs.homeModules.dconf
+    # outputs.homeModules.nixpkgs
   ];
 
   home = {
@@ -29,7 +30,7 @@
       telegram-desktop
       discord
       google-chrome
-      firefox
+      # firefox
       onlyoffice-desktopeditors
       fastfetch
     ];

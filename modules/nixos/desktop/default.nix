@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   # Enable GNOME with Wayland
-  services.xserver = {
-    enable = true;
+  services = {
+    xserver.enable = true;
     displayManager.gdm = {
       enable = true;
       wayland = true;
@@ -11,7 +11,7 @@
       enable = true;
     };
 
-    xkb = {
+    xserver.xkb = {
       layout = "us,ru";
       options = "grp:alt_shift_toggle,grp:win_space_toggle,caps:escape,eurosign:e";
     };
@@ -25,7 +25,7 @@
   # Ensure XDG portals are properly configured for GNOME
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
+    extraPortals = [pkgs.xdg-desktop-portal-gnome];
     config.common.default = "*";
   };
 

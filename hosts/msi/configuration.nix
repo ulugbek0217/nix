@@ -34,8 +34,6 @@
 
   # FIXME: Add the rest of your current configuration
 
-
-
   # TODO: Set your hostname
   networking = {
     hostName = "msi";
@@ -69,6 +67,9 @@
       PasswordAuthentication = false;
     };
   };
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Do not touch
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
