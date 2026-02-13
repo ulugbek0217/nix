@@ -5,5 +5,6 @@
     ./python.nix
     ./nodejs.nix
     ./podman.nix
+    ./cpp.nix
   ];
 }

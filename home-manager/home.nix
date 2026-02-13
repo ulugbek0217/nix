@@ -12,7 +12,7 @@
     outputs.homeModules.zed
     outputs.homeModules.zsh
     outputs.homeModules.dconf
-    # outputs.homeModules.nixpkgs
+    outputs.homeModules.nixpkgs
   ];
 
   home = {
@@ -33,8 +33,11 @@
       # firefox
       onlyoffice-desktopeditors
       fastfetch
+      peazip
     ];
   };
+
+  nixpkgs.config = {allowUnfree = true;};
 
   # This is important for GNOME to find applications
   targets.genericLinux.enable = false;

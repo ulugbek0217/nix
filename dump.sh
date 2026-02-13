@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+# !/usr/bin/bash
 
 # dump-nix.zsh
 # Concatenate all Nix-related files into test.nix.blank, excluding unwanted files/dirs.
