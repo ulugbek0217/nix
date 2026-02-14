@@ -109,12 +109,12 @@
 
     theme = {
       mode = "system";
-      light = "Gruvbox Light Hard";
-      dark = "Gruvbox Dark Hard";
+      light = "One Light";
+      dark = "One Dark";
     };
     icon_theme = "Material Icon Theme";
 
-    tab_size = 2;
+    tab_size = 4;
     preferred_line_length = 100;
 
     autosave = "off";

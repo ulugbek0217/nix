@@ -88,6 +88,7 @@
   programs.firefox.enable = true;
 
   programs.dconf.enable = true;
+  programs.direnv.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
