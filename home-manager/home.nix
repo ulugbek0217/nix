@@ -13,6 +13,7 @@
     outputs.homeModules.zsh
     outputs.homeModules.dconf
     outputs.homeModules.nixpkgs
+    outputs.homeModules.vscode
   ];
 
   home = {

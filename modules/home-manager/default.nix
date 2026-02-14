@@ -9,4 +9,5 @@
   zed = import ./zed;
   zsh = import ./zsh;
   dconf = import ./dconf;
+  vscode = import ./vscode;
 }

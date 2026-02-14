@@ -22,6 +22,7 @@
     "gotmpl"
     "dockerfile"
     "docker-compose"
+    "alejandra"
   ];
 
   settings = {
@@ -37,8 +38,8 @@
     show_edit_predictions = false;
 
     node = {
-      path = lib.getExe pkgs.nodejs;
-      npm_path = lib.getExe' pkgs.nodejs "npm";
+      path = "${pkgs.nodejs}/bin/node";
+      npm_path = "${pkgs.nodejs}/bin/npm";
     };
 
     languages = {
@@ -130,7 +131,7 @@
     ui_font_family = ".SystemUIFont";
 
     confirm_quit = false;
-    use_autoclose = false;
+    use_autoclose = true;
 
     inlay_hints = {
       enabled = true;
