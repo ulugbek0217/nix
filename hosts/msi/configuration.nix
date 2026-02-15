@@ -19,6 +19,7 @@
     outputs.nixosModules.desktop
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
+    outputs.devModules
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -70,6 +71,8 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.direnv.enable = true;
 
   # Do not touch
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

@@ -36,6 +36,8 @@
     dconf-editor
   ];
 
+  programs.dconf.enable = true;
+
   environment.gnome.excludePackages = with pkgs; [
     epiphany
     geary

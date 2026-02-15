@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   config = {
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
@@ -15,6 +15,10 @@
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+    environment.systemPackages = with pkgs; [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      alsa-utils
+    ];
     hardware.alsa.enablePersistence = true;
   };
 }
