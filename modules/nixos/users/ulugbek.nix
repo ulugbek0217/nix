@@ -9,7 +9,7 @@
       initialPassword = "chubbyCat";
       isNormalUser = true;
       openssh.authorizedKeys.keys = [];
-      extraGroups = ["wheel" "docker" "podman" "networkmanager"];
+      extraGroups = ["wheel" "docker" "podman" "networkmanager" "libvirtd"];
 
       # Remove GUI packages from here - they should be in home-manager
       # Keep only system-level utilities if needed

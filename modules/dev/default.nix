@@ -4,7 +4,7 @@
     ./go.nix
     ./python.nix
     ./nodejs.nix
-    ./podman.nix
+    ./virtualization.nix
     ./cpp.nix
   ];
 }

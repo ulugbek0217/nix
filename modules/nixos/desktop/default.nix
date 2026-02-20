@@ -34,6 +34,7 @@
     gnome-tweaks
     gnome-extension-manager
     dconf-editor
+    gnomeExtensions.vitals
   ];
 
   programs.dconf.enable = true;

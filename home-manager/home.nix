@@ -14,6 +14,8 @@
     outputs.homeModules.dconf
     outputs.homeModules.nixpkgs
     outputs.homeModules.vscode
+    outputs.homeModules.obs-studio
+    # outputs.homeModules.copyq
   ];
 
   home = {
@@ -35,6 +37,7 @@
       onlyoffice-desktopeditors
       fastfetch
       peazip
+      copyq
     ];
   };
 

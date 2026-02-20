@@ -53,13 +53,18 @@
     ];
   };
 
-  boot.kernelParams = ["i915.force_probe=7d55"];
+  boot.kernelParams = [
+    "xe.force_probe=7d55"
+    "xe.enable_psr=1"
+    "intel_idle.max_cstate=9"
+    "i915.force_probe=!7d55"
+  ];
   services.thermald.enable = true;
 
   services.power-profiles-daemon.enable = false;
 
   # Enable auto-cpu-freq
-  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.enable = false;
   services.auto-cpufreq.settings = {
     charger = {
       governor = "performance";
@@ -79,7 +84,41 @@
     # Optional: Battery charge thresholds
     START_CHARGE_THRESH_BAT0 = 60; # Start charging at 40%
     STOP_CHARGE_THRESH_BAT0 = 80; # Stop charging at 80%
+    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+    CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "power"; # Strongest saving on MTL
+
+    CPU_BOOST_ON_AC = "1";
+    CPU_BOOST_ON_BAT = "0"; # Disable turbo on battery
+
+    CPU_HWP_DYN_BOOST_ON_AC = "1";
+    CPU_HWP_DYN_BOOST_ON_BAT = "0";
+
+    PLATFORM_PROFILE_ON_AC = "performance";
+    PLATFORM_PROFILE_ON_BAT = "low-power"; # MTL supports this
+
+    # === Runtime power management (PCIe, USB, etc.) ===
+    RUNTIME_PM_ON_AC = "auto";
+    RUNTIME_PM_ON_BAT = "auto";
+
+    # === Disk / NVMe (your 1 TB SSD) ===
+    DISK_APM_LEVEL_ON_BAT = "128 128";
+    SATA_LINK_POWER_MGMT_ON_BAT = "min_power";
+
+    # === Audio (your backlight keyboard doesn't affect this) ===
+    # SOUND_POWER_SAVE_ON_BAT = "1";
+    # SOUND_POWER_SAVE_CONTROLLER = "Y";
+
+    # === WiFi (assume Intel iwlwifi — very common on this platform) ===
+    WIFI_POWERSAVE_ON_BAT = "1";
+
+    # === USB autosuspend ===
+    USB_AUTOSUSPEND_ON_BAT = "1";
   };
+
+  powerManagement.powertop.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -95,10 +134,10 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   alsa-utils
-  # ];
+  environment.systemPackages = with pkgs; [
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    tree
+  ];
 
   # List services that you want to enable:
 

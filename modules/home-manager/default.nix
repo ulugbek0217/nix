@@ -10,4 +10,6 @@
   zsh = import ./zsh;
   dconf = import ./dconf;
   vscode = import ./vscode;
+  copyq = import ./copyq;
+  obs-studio = import ./obs-studio;
 }
