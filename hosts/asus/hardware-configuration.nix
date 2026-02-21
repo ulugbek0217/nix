@@ -13,7 +13,7 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["xe"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
@@ -38,6 +38,12 @@
   swapDevices = [
     {device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946";}
   ];
+
+  fileSystems."/mnt/hdd" = {
+    device = "/dev/disk/by-uuid/748C0F7E8C0F3A5E";
+    fsType = "ntfs"; # or "ntfs", "exfat", etc.
+    options = ["defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
