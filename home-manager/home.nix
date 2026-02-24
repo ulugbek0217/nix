@@ -38,6 +38,7 @@
       fastfetch
       peazip
       copyq
+      foliate
     ];
   };
 
