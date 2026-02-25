@@ -35,8 +35,6 @@
         "_processor_usage_"
         "_memory_usage_"
         "_temperature_cpu_"
-        "_gpu_usage_"
-        "_fan_rpm_"
       ];
       update-time = 1;
       show-icons = true;

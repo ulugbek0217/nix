@@ -88,7 +88,7 @@
     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
     CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-    CPU_ENERGY_PERF_POLICY_ON_BAT = "power"; # Strongest saving on MTL
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
 
     CPU_BOOST_ON_AC = "1";
     CPU_BOOST_ON_BAT = "0"; # Disable turbo on battery
@@ -97,25 +97,17 @@
     CPU_HWP_DYN_BOOST_ON_BAT = "0";
 
     PLATFORM_PROFILE_ON_AC = "performance";
-    PLATFORM_PROFILE_ON_BAT = "low-power"; # MTL supports this
+    PLATFORM_PROFILE_ON_BAT = "balanced";
 
     # === Runtime power management (PCIe, USB, etc.) ===
     RUNTIME_PM_ON_AC = "auto";
     RUNTIME_PM_ON_BAT = "auto";
 
-    # === Disk / NVMe (your 1 TB SSD) ===
-    DISK_APM_LEVEL_ON_BAT = "128 128";
-    SATA_LINK_POWER_MGMT_ON_BAT = "min_power";
-
-    # === Audio (your backlight keyboard doesn't affect this) ===
-    # SOUND_POWER_SAVE_ON_BAT = "1";
-    # SOUND_POWER_SAVE_CONTROLLER = "Y";
-
     # === WiFi (assume Intel iwlwifi — very common on this platform) ===
     WIFI_POWERSAVE_ON_BAT = "1";
 
     # === USB autosuspend ===
-    USB_AUTOSUSPEND_ON_BAT = "1";
+    USB_AUTOSUSPEND_ON_BAT = "0";
   };
 
   powerManagement.powertop.enable = true;
