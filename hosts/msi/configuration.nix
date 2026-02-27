@@ -19,6 +19,8 @@
     outputs.nixosModules.desktop
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
+    outputs.nixosModules.steam
+    outputs.nixosModules.cli
     outputs.devModules
 
     # Or modules from other flakes (such as nixos-hardware):

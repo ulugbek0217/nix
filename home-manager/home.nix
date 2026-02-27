@@ -15,7 +15,6 @@
     outputs.homeModules.nixpkgs
     outputs.homeModules.vscode
     outputs.homeModules.obs-studio
-    # outputs.homeModules.copyq
   ];
 
   home = {
@@ -39,6 +38,9 @@
       peazip
       copyq
       foliate
+      rustdesk
+      protonup-qt
+      mission-center
     ];
   };
 

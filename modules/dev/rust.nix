@@ -7,5 +7,6 @@
     bacon # Background code checker
     pkg-config
     openssl
+    rustfmt
   ];
 }

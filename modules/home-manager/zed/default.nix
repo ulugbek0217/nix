@@ -125,7 +125,7 @@
     soft_wrap = "editor_width";
 
     buffer_font_size = 16;
-    buffer_font_family = "FiraCode Nerd Font";
+    buffer_font_family = "JetbrainsMono Nerd Font";
 
     ui_font_size = 16;
     ui_font_family = ".SystemUIFont";

@@ -3,11 +3,43 @@
     enable = true;
     defaultEditor = true;
 
+    languages = {
+      language = [
+        {
+          name = "rust";
+          auto-format = true;
+          formatter = {command = "rustfmt";};
+        }
+        {
+          name = "go";
+          auto-format = true;
+          formatter = {command = "goimports";};
+          language-servers = ["gopls"];
+        }
+        {
+          name = "python";
+          auto-format = true;
+          formatter = {
+            command = "black";
+            args = ["--quiet" "-"];
+          };
+        }
+      ];
+      language-server.gopls = {
+        command = "gopls";
+        config = {
+          # Screenshotdagi xatolikni oldini olish uchun ba'zan konfiguratsiyani tozalash kerak
+          formatting.gofumpt = true;
+          ui.diagnostic.staticcheck = true;
+        };
+      };
+    };
+
     settings = {
-      theme = "autumn_night";
+      theme = "dracula";
 
       editor = {
-        line-number = "relative";
+        line-number = "absolute";
 
         cursor-shape = {
           insert = "bar";
@@ -44,9 +76,9 @@
           separator = "│";
 
           mode = {
-            normal = "SLAVE";
-            insert = "MASTER";
-            select = "DUNGEON";
+            normal = "NORMAL";
+            insert = "INSERT";
+            select = "SELECT";
           };
         };
       };
@@ -59,11 +91,36 @@
         "C-down" = "jump_view_down";
 
         "C-r" = ":reload";
+        "C-s" = ":w";
+      };
+      keys.insert = {
+        "C-s" = [":w " "insert_mode"];
       };
     };
 
     extraPackages = with pkgs;
       [
+        #-- go
+        go
+        gopls # Go language server
+        gotools # goimports, godoc, etc.
+        gomodifytags
+        impl
+        delve # debugger
+        golangci-lint
+        # golangci-lint-langserver
+
+        #-- python
+        (python3.withPackages (ps:
+          with ps; [
+            black
+            # python-lsp-server
+            pylsp-rope
+            python-lsp-ruff
+          ]))
+        pyright
+        ruff
+
         #-- c/c++
         cmake
         cmake-language-server
@@ -77,6 +134,7 @@
         rust-analyzer
         cargo # rust package manager
         rustfmt
+        lldb_19
 
         #-- nix
         nixd
@@ -105,6 +163,7 @@
         #-- Others
         taplo # TOML language server / formatter / validator
         yaml-language-server
+        sqls
         sqlfluff # SQL linter
         actionlint # GitHub Actions linter
 

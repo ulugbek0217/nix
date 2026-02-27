@@ -18,6 +18,8 @@
     outputs.nixosModules.desktop
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
+    outputs.nixosModules.steam
+    outputs.nixosModules.cli
     outputs.devModules
 
     ./hardware-configuration.nix
@@ -46,6 +48,7 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       vpl-gpu-rt
       intel-vaapi-driver
@@ -98,16 +101,6 @@
 
     PLATFORM_PROFILE_ON_AC = "performance";
     PLATFORM_PROFILE_ON_BAT = "balanced";
-
-    # === Runtime power management (PCIe, USB, etc.) ===
-    RUNTIME_PM_ON_AC = "auto";
-    RUNTIME_PM_ON_BAT = "auto";
-
-    # === WiFi (assume Intel iwlwifi — very common on this platform) ===
-    WIFI_POWERSAVE_ON_BAT = "1";
-
-    # === USB autosuspend ===
-    USB_AUTOSUSPEND_ON_BAT = "0";
   };
 
   powerManagement.powertop.enable = true;
@@ -128,7 +121,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    tree
   ];
 
   # List services that you want to enable:

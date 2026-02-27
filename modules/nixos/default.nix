@@ -10,4 +10,6 @@
   desktop = import ./desktop;
   fonts = import ./fonts;
   zsh = import ./zsh;
+  steam = import ./steam;
+  cli = import ./cli;
 }
