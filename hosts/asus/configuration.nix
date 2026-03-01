@@ -20,6 +20,7 @@
     outputs.nixosModules.fonts
     outputs.nixosModules.steam
     outputs.nixosModules.cli
+    outputs.nixosModules.lutris
     outputs.devModules
 
     ./hardware-configuration.nix

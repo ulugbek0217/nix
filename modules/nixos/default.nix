@@ -12,4 +12,5 @@
   zsh = import ./zsh;
   steam = import ./steam;
   cli = import ./cli;
+  lutris = import ./lutris;
 }
