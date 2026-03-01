@@ -23,6 +23,7 @@
     "dockerfile"
     "docker-compose"
     "alejandra"
+    "one-dark-pro"
   ];
 
   settings = {
@@ -110,8 +111,8 @@
 
     theme = {
       mode = "system";
-      light = "One Light";
-      dark = "One Dark";
+      light = "One Light Pro";
+      dark = "One Dark Pro";
     };
     icon_theme = "Material Icon Theme";
 
@@ -125,9 +126,9 @@
     soft_wrap = "editor_width";
 
     buffer_font_size = 16;
-    buffer_font_family = "JetbrainsMono Nerd Font";
+    buffer_font_family = "JetBrainsMono Nerd Font";
 
-    ui_font_size = 16;
+    ui_font_size = 18;
     ui_font_family = ".SystemUIFont";
 
     confirm_quit = false;

@@ -47,7 +47,7 @@
     # --- settings.json ---
     profiles.default.userSettings = {
       # Shrift sozlamalari
-      "editor.fontFamily" = "'FiraCode Nerd Font', 'Fira Code', monospace";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'FiraCode Nerd Font', 'Fira Code', monospace";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 14;
 
