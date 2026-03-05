@@ -41,6 +41,7 @@
       rustdesk
       protonup-qt
       mission-center
+      qbittorrent
     ];
   };
 

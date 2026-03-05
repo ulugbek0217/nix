@@ -44,7 +44,7 @@
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
   };
 
   hardware.graphics = {
@@ -63,6 +63,10 @@
     "intel_idle.max_cstate=9"
     "i915.force_probe=!7d55"
   ];
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  services.flatpak.enable = true;
+  
   services.thermald.enable = true;
 
   services.power-profiles-daemon.enable = false;

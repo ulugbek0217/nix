@@ -53,6 +53,8 @@
     XDG_DATA_DIRS = [
       "/run/current-system/sw/share"
       "$HOME/.nix-profile/share"
+      "/var/lib/flatpak/exports/share"
+      "/home/ulugbek/.local/share/flatpak/exports/share"
     ];
   };
 }
