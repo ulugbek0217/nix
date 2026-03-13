@@ -49,7 +49,7 @@
       # Shrift sozlamalari
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'FiraCode Nerd Font', 'Fira Code', monospace";
       "editor.fontLigatures" = true;
-      "editor.fontSize" = 14;
+      "editor.fontSize" = 16;
 
       # Mavzu (Theme)
       "workbench.colorTheme" = "One Dark Pro"; # Material Theme o'rnatilganda keladi
@@ -60,9 +60,12 @@
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
 
+      "rust-analyzer.server.path" = "rust-analyzer";
+
       # Go sozlamalari
       "go.useLanguageServer" = true;
       "go.lintTool" = "golangci-lint";
+      "go.diagnostic.vulncheck" = "Imports";
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nixd"; # Siz nixd ishlatayotganingiz uchun nixd deb ko'rsatamiz

@@ -19,6 +19,7 @@
     "sql"
     "toml"
     "xml"
+    "go"
     "gotmpl"
     "dockerfile"
     "docker-compose"
@@ -105,6 +106,19 @@
           formatting = true;
         };
       };
+
+      gopls = {
+        binary = {
+          path = "gopls";
+        };
+        settings = {
+          hints = {
+            assignVariableTypes = true;
+            compositeLiteralFields = true;
+            parameterNames = true;
+          };
+        };
+      };
     };
 
     load_direnv = "shell_hook";
@@ -163,7 +177,13 @@ in {
       userSettings = settings;
       installRemoteServer = true;
       package = pkgs.zed-editor;
-      extraPackages = config.programs.helix.extraPackages;
+      extraPackages = with pkgs;
+        [
+          gopls
+          gotools
+          delve
+        ]
+        ++ config.programs.helix.extraPackages;
     };
   };
 }

@@ -9,6 +9,11 @@
     };
     desktopManager.gnome = {
       enable = true;
+      extraGSettingsOverrides = ''
+        [org.gnome.mutter.wayland]
+        xwayland-allow-grabs=true
+        xwayland-grab-access-rules=['*']
+      '';
     };
 
     xserver.xkb = {
@@ -56,5 +61,7 @@
       "/var/lib/flatpak/exports/share"
       "/home/ulugbek/.local/share/flatpak/exports/share"
     ];
+
+    NIXOS_OZONE_WL = 1;
   };
 }

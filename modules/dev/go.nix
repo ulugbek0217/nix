@@ -3,6 +3,7 @@
     go
     gopls # Language server
     delve # Debugger
+    golangci-lint
   ];
   # Go muhiti uchun pathlarni sozlash
   environment.sessionVariables = {

@@ -32,7 +32,6 @@
       telegram-desktop
       discord
       google-chrome
-      # firefox
       onlyoffice-desktopeditors
       fastfetch
       peazip
