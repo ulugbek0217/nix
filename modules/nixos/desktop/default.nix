@@ -61,7 +61,5 @@
       "/var/lib/flatpak/exports/share"
       "/home/ulugbek/.local/share/flatpak/exports/share"
     ];
-
-    NIXOS_OZONE_WL = 1;
   };
 }

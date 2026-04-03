@@ -13,5 +13,7 @@
     zoxide
     fzf
     glances
+    wget
+    time
   ];
 }
