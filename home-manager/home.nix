@@ -41,6 +41,7 @@
       protonup-qt
       mission-center
       qbittorrent
+      unstable.insomnia
     ];
   };
 

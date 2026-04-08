@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.unstable; [
     rustc
     cargo
     rust-analyzer # LSP (IDE uchun)
