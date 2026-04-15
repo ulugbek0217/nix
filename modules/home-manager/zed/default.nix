@@ -29,13 +29,14 @@
 
   settings = {
     auto_update = false;
-
     disable_ai = true;
-
     telemetry = {
       metrics = false;
       diagnostics = false;
     };
+
+    detect_indentation = false;
+    tab_size = 4;
 
     show_edit_predictions = false;
 
@@ -119,6 +120,12 @@
           };
         };
       };
+
+      clangd = {
+        arguments = [
+          "--fallback-style={BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4}"
+        ];
+      };
     };
 
     load_direnv = "shell_hook";
@@ -130,7 +137,6 @@
     };
     icon_theme = "Material Icon Theme";
 
-    tab_size = 4;
     preferred_line_length = 100;
 
     autosave = "off";
