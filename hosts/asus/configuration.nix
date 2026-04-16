@@ -48,6 +48,8 @@
     powerOnBoot = false;
   };
 
+  services.xserver.videoDrivers = ["modesetting"];
+
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -55,6 +57,7 @@
       vpl-gpu-rt
       intel-vaapi-driver
       intel-media-driver
+      intel-compute-runtime
     ];
   };
 
@@ -73,7 +76,7 @@
   services.power-profiles-daemon.enable = false;
 
   # Enable auto-cpu-freq
-  services.auto-cpufreq.enable = false;
+  services.auto-cpufreq.enable = true;
   services.auto-cpufreq.settings = {
     charger = {
       governor = "performance";
@@ -82,13 +85,17 @@
     };
     battery = {
       governor = "powersave";
-      energy_performance_preference = "power"; # Qizishni oldini olish uchun
-      turbo = "never";
+      energy_performance_preference = "balance_power";
+      turbo = "auto";
+    };
+    battery_management = {
+      enable = true;
+      threshold = 80;
     };
   };
 
   # Enable TLP
-  services.tlp.enable = true;
+  services.tlp.enable = false;
   services.tlp.settings = {
     # Optional: Battery charge thresholds
     START_CHARGE_THRESH_BAT0 = 60; # Start charging at 60%
