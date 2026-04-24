@@ -145,10 +145,10 @@
 
     soft_wrap = "editor_width";
 
-    buffer_font_size = 16;
+    buffer_font_size = 14;
     buffer_font_family = "JetBrainsMono Nerd Font";
 
-    ui_font_size = 18;
+    ui_font_size = 15;
     ui_font_family = ".SystemUIFont";
 
     confirm_quit = false;
