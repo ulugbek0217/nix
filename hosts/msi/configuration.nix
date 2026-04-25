@@ -22,6 +22,7 @@
     outputs.nixosModules.steam
     outputs.nixosModules.cli
     outputs.devModules
+    inputs.nix-data.nixosModules.nix-data
 
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
@@ -34,6 +35,13 @@
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
+
+  programs.nix-data = {
+    enable = true;
+    systemconfig = "/home/ulugbek/.config/nix.bak/hosts/msi/configuration.nix";
+    flake = "/home/ulugbek/.config/nix.bak/flake.nix";
+    flakearg = "msi"; # your hostname
+  };
 
   # FIXME: Add the rest of your current configuration
 
