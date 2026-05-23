@@ -88,17 +88,13 @@
       energy_performance_preference = "balance_power";
       turbo = "auto";
     };
-    battery_management = {
-      enable = true;
-      threshold = 80;
-    };
   };
-  environment.etc."auto-cpufreq.conf".text = ''
-    [battery]
-    enable_thresholds = true
-    start_threshold = 60
-    end_threshold = 80
-  '';
+  # environment.etc."auto-cpufreq.conf".text = ''
+  #   [battery]
+  #   enable_thresholds = true
+  #   start_threshold = 60
+  #   end_threshold = 80
+  # '';
 
   # Enable TLP
   services.tlp.enable = false;
