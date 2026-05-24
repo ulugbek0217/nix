@@ -15,5 +15,6 @@
     glances
     wget
     time
+    sbctl
   ];
 }

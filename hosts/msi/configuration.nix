@@ -24,6 +24,7 @@
     outputs.devModules
     inputs.nix-data.nixosModules.nix-data
 
+
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -36,12 +37,13 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  programs.nix-data = {
-    enable = true;
-    systemconfig = "/home/ulugbek/.config/nix.bak/hosts/msi/configuration.nix";
-    flake = "/home/ulugbek/.config/nix.bak/flake.nix";
-    flakearg = "msi"; # your hostname
-  };
+
+  # programs.nix-data = {
+  #   enable = true;
+  #   systemconfig = "/home/ulugbek/.config/nix.bak/hosts/msi/configuration.nix";
+  #   flake = "/home/ulugbek/.config/nix.bak/flake.nix";
+  #   flakearg = "msi"; # your hostname
+  # };
 
   # FIXME: Add the rest of your current configuration
 
@@ -86,5 +88,5 @@
 
   # Do not touch
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

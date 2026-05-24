@@ -28,24 +28,31 @@
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/626dd808-4b36-4503-b532-e977be3fcfa3";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/7465a4f9-f76d-4947-adf7-f3b9ca0abc92";
+    fsType = "btrfs";
+    options = [ "subvol=@" ];
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/7492-8979";
-    fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
-  };
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/7465a4f9-f76d-4947-adf7-f3b9ca0abc92";
+      fsType = "btrfs";
+      options = [ "subvol=@home" ];
+    };
 
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/e76e00ad-d714-4300-ab79-9149e755b0a1";}
-  ];
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/F33F-135E";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/ed9eb138-9734-4f4c-8c4d-88333c38a730"; }
+    ];
 
   fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/6222C66E22C646AF";
+    device = "/dev/disk/by-uuid/b60e79e1-b8f3-4d08-872f-2a2bcb83e093";
     fsType = "ntfs"; # or "ntfs", "exfat", etc.
-    options = ["defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
+    options = ["nofail" "defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

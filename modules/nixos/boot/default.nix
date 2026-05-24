@@ -1,4 +1,4 @@
-{pkgs, ...}: let
+{pkgs, lib, ...}: let
   resolution = "1920x1080";
   theme-package = pkgs.callPackage ./theme.nix {};
 in {
@@ -15,18 +15,26 @@ in {
         # "udev.log_priority=3"
       ];
       kernelPackages = pkgs.linuxPackages_latest;
+
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/var/lib/sbctl";
+      };
+
       loader = {
         efi.canTouchEfiVariables = true;
-        grub = {
-          enable = true;
-          devices = ["nodev"];
-          efiSupport = true;
-          useOSProber = true;
-          gfxmodeEfi = "${resolution},auto";
-          gfxmodeBios = "${resolution},auto";
-          # theme = theme-package;
-          # splashImage = "${theme-package}/background.png";
-        };
+        # systemd-boot.enable = true;
+
+        # grub = {
+        #   enable = true;
+        #   devices = ["nodev"];
+        #   efiSupport = true;
+        #   useOSProber = true;
+        #   gfxmodeEfi = "${resolution},auto";
+        #   gfxmodeBios = "${resolution},auto";
+        #   # theme = theme-package;
+        #   # splashImage = "${theme-package}/background.png";
+        # };
       };
       plymouth = {
         enable = true;
