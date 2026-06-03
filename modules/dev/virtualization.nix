@@ -20,9 +20,9 @@
   # virtualisation.podman.extraPackages = [pkgs.runc];
 
   environment.systemPackages = with pkgs; [
-    podman-compose # Docker-compose o'rniga ishlatish uchun
-    podman-tui # Terminalda konteynerlarni boshqarish uchun UI
+    podman-compose
+    podman-tui
     dive
-    dnsmasq # Konteyner image-larini analiz qilish uchun
+    dnsmasq
   ];
 }

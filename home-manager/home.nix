@@ -21,13 +21,12 @@
     username = "ulugbek";
     homeDirectory = "/home/ulugbek";
 
-    # Remove the mkForce override or adjust it to include home-manager paths
     sessionVariables = {
       # Let home-manager handle XDG_DATA_DIRS automatically
       # If you need to add custom paths, append them instead of replacing
     };
 
-    # Move GUI applications here from ulugbek.nix
+    # List of user's gui apps
     packages = with pkgs; [
       telegram-desktop
       discord
@@ -42,6 +41,7 @@
       mission-center
       qbittorrent
       unstable.insomnia
+      obsidian
     ];
   };
 
