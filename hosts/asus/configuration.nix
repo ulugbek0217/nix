@@ -135,6 +135,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    openrgb
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   ];
 
@@ -151,6 +152,8 @@
       PasswordAuthentication = false;
     };
   };
+
+  services.hardware.openrgb.enable = true;
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
