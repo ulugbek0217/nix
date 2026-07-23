@@ -1,14 +1,9 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   inputs,
   outputs,
-  pkgs,
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     outputs.nixosModules.boot
     outputs.nixosModules.users.ulugbek
     outputs.nixosModules.audio
@@ -21,112 +16,64 @@
     outputs.nixosModules.lutris
     outputs.devModules
     outputs.nixosModules.nixld
+    outputs.nixosModules.virtualization
+
+    inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "asus"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "asus";
+    networkmanager.enable = true;
+  };
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
   time = {
     timeZone = "Asia/Tashkent";
     hardwareClockInLocalTime = true;
   };
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable bluetooth
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = false;
+    powerOnBoot = true;
   };
-
-  services.xserver.videoDrivers = ["modesetting"];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      vpl-gpu-rt
-      intel-vaapi-driver
-      intel-media-driver
-      intel-compute-runtime
-    ];
-  };
-
-  boot.kernelParams = [
-    "xe.force_probe=7d55"
-    "xe.enable_psr=1"
-    "intel_idle.max_cstate=9"
-    "i915.force_probe=!7d55"
-  ];
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
 
   services.flatpak.enable = true;
-
+  services.xserver.videoDrivers = ["modesetting"];
   services.thermald.enable = true;
 
   services.power-profiles-daemon.enable = false;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-  # Enable auto-cpu-freq
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      energy_performance_preference = "performance";
-      turbo = "auto";
-    };
-    battery = {
-      governor = "powersave";
-      energy_performance_preference = "balance_power";
-      turbo = "auto";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      # CPU_MIN_PERF_ON_AC = 0;
+      # CPU_MAX_PERF_ON_AC = 100;
+      # CPU_MIN_PERF_ON_BAT = 0;
+      # CPU_MAX_PERF_ON_BAT = 20;
+
+      #Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 80; # 80 and below it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
     };
   };
 
   zramSwap = {
     enable = true;
-    memoryPercent = 250;
+    memoryPercent = 200;
   };
 
-  # Enable TLP
-  services.tlp.enable = false;
-  services.tlp.settings = {
-    # START_CHARGE_THRESH_BAT0 = 60; # Start charging at 60%
-    # STOP_CHARGE_THRESH_BAT0 = 80; # Stop charging at 80%
-    CPU_SCALING_GOVERNOR_ON_AC = "performance";
-    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-    CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-    CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-
-    CPU_BOOST_ON_AC = "1";
-    CPU_BOOST_ON_BAT = "1";
-
-    CPU_HWP_DYN_BOOST_ON_AC = "1";
-    CPU_HWP_DYN_BOOST_ON_BAT = "1";
-
-    PLATFORM_PROFILE_ON_AC = "balanced";
-    PLATFORM_PROFILE_ON_BAT = "balanced";
-  };
-
-  powerManagement.powertop.enable = true;
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
-
-  # Install firefox.
   programs.firefox.enable = true;
-
-  # programs.dconf.enable = true;
   programs.direnv.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
@@ -139,8 +86,6 @@
       PasswordAuthentication = false;
     };
   };
-
-  services.hardware.openrgb.enable = true;
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

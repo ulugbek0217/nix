@@ -3,8 +3,6 @@
 {
   inputs,
   outputs,
-  lib,
-  pkgs,
   ...
 }: {
   # You can import other NixOS modules here
@@ -21,26 +19,12 @@
     outputs.nixosModules.steam
     outputs.nixosModules.cli
     outputs.devModules
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
 
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
+    inputs.home-manager.nixosModules.home-manager
 
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
     # inputs.home-manager.nixosModules.home-manager
   ];
-
-  # programs.nix-data = {
-  #   enable = true;
-  #   systemconfig = "/home/ulugbek/.config/nix.bak/hosts/msi/configuration.nix";
-  #   flake = "/home/ulugbek/.config/nix.bak/flake.nix";
-  #   flakearg = "msi"; # your hostname
-  # };
-
-  # FIXME: Add the rest of your current configuration
 
   # TODO: Set your hostname
   networking = {

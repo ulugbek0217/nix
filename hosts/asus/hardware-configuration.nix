@@ -12,10 +12,21 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["xe"];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot = {
+    initrd = {
+      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
+      kernelModules = ["xe"];
+    };
+    kernelModules = ["kvm-intel"];
+    kernelParams = [
+      "xe.force_probe=7d55"
+      "xe.enable_psr=1"
+      "intel_idle.max_cstate=9"
+      "i915.force_probe=!7d55"
+    ];
+
+    extraModulePackages = [];
+  };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
@@ -41,10 +52,23 @@
 
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/748C0F7E8C0F3A5E";
-    fsType = "ntfs"; # or "ntfs", "exfat", etc.
+    fsType = "ntfs";
     options = ["nofail" "defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        vpl-gpu-rt
+        intel-media-driver
+        intel-compute-runtime
+      ];
+    };
+  };
 }

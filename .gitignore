@@ -1,4 +1,6 @@
-/result
-/.vscode
-/.idea
+result/
+.vscode/
+.idea/
+.zed/
 *.blank
+result

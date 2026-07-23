@@ -88,7 +88,6 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./hosts/asus/configuration.nix
-          inputs.home-manager.nixosModules.home-manager
           lanzaboote.nixosModules.lanzaboote
         ];
       };
