@@ -128,7 +128,7 @@
       };
     };
 
-    load_direnv = "shell_hook";
+    load_direnv = "direct";
 
     theme = {
       mode = "system";

@@ -1,10 +1,17 @@
 {pkgs, ...}: {
   virtualisation = {
-    podman = {
+    docker = {
       enable = true;
-      dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true;
-      extraPackages = [pkgs.runc];
+      storageDriver = "btrfs";
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+        daemon.settings = {
+          data-root = "~/.local/docker";
+          # dns = [ "1.1.1.1" "8.8.8.8" ];
+          registry-mirrors = ["https://mirror.gcr.io"];
+        };
+      };
     };
     libvirtd = {
       enable = true;
@@ -17,11 +24,8 @@
   services.spice-vdagentd.enable = true;
   networking.firewall.trustedInterfaces = ["virbr0"];
 
-  # virtualisation.podman.extraPackages = [pkgs.runc];
-
   environment.systemPackages = with pkgs; [
-    podman-compose
-    podman-tui
+    docker
     dive
     dnsmasq
   ];

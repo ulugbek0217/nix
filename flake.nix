@@ -18,14 +18,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
 
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-};
+  };
 
   outputs = {
     self,
@@ -80,8 +79,9 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           # > Our main nixos configuration file <
-          lanzaboote.nixosModules.lanzaboote
           ./hosts/msi/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
+          inputs.home-manager.nixosModules.home-manager
         ];
       };
       asus = nixpkgs.lib.nixosSystem {

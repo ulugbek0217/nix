@@ -42,7 +42,7 @@
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/748C0F7E8C0F3A5E";
     fsType = "ntfs"; # or "ntfs", "exfat", etc.
-    options = ["defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
+    options = ["nofail" "defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

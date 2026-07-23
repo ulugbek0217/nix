@@ -4,8 +4,6 @@
 {
   inputs,
   outputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
@@ -89,19 +87,17 @@
       turbo = "auto";
     };
   };
-  # environment.etc."auto-cpufreq.conf".text = ''
-  #   [battery]
-  #   enable_thresholds = true
-  #   start_threshold = 60
-  #   end_threshold = 80
-  # '';
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 250;
+  };
 
   # Enable TLP
   services.tlp.enable = false;
   services.tlp.settings = {
-    # Optional: Battery charge thresholds
-    START_CHARGE_THRESH_BAT0 = 60; # Start charging at 60%
-    STOP_CHARGE_THRESH_BAT0 = 80; # Stop charging at 80%
+    # START_CHARGE_THRESH_BAT0 = 60; # Start charging at 60%
+    # STOP_CHARGE_THRESH_BAT0 = 80; # Stop charging at 80%
     CPU_SCALING_GOVERNOR_ON_AC = "performance";
     CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
@@ -131,15 +127,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    openrgb
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  ];
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh = {

@@ -1,8 +1,15 @@
-{pkgs, lib, ...}: let
-  resolution = "1920x1080";
-  theme-package = pkgs.callPackage ./theme.nix {};
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  # resolution = "1920x1080";
+  # theme-package = pkgs.callPackage ./theme.nix {};
 in {
   config = {
+    # imports = [
+    #   inputs.lanzaboote.nixosModules.lanzaboote
+    # ];
     # Bootloader.
     boot = {
       consoleLogLevel = 0;

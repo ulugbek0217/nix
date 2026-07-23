@@ -4,8 +4,8 @@
       with ps; [
         pip
         virtualenv
-        black # Formatter
-        ruff # Linter
+        black
+        ruff
       ]))
   ];
 }

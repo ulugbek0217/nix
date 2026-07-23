@@ -36,7 +36,6 @@
       peazip
       copyq
       foliate
-      rustdesk
       protonup-qt
       mission-center
       qbittorrent
@@ -45,7 +44,7 @@
     ];
   };
 
-  nixpkgs.config = {allowUnfree = true;};
+  nixpkgs.config.allowUnfree = true;
 
   # This is important for GNOME to find applications
   targets.genericLinux.enable = false;

@@ -14,4 +14,5 @@
   cli = import ./cli;
   lutris = import ./lutris;
   nixld = import ./nixld;
+  virtualization = ./virtualization;
 }

@@ -4,7 +4,6 @@
   inputs,
   outputs,
   lib,
-  config,
   pkgs,
   ...
 }: {
@@ -22,9 +21,6 @@
     outputs.nixosModules.steam
     outputs.nixosModules.cli
     outputs.devModules
-    inputs.nix-data.nixosModules.nix-data
-
-
     # Or modules from other flakes (such as nixos-hardware):
     # inputs.hardware.nixosModules.common-cpu-amd
     # inputs.hardware.nixosModules.common-ssd
@@ -34,9 +30,8 @@
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
+    # inputs.home-manager.nixosModules.home-manager
   ];
-
 
   # programs.nix-data = {
   #   enable = true;

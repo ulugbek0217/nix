@@ -2,9 +2,9 @@
   environment.systemPackages = with pkgs.unstable; [
     rustc
     cargo
-    rust-analyzer # LSP (IDE uchun)
-    clippy # Linter
-    bacon # Background code checker
+    rust-analyzer
+    clippy
+    bacon
     pkg-config
     openssl
     rustfmt
