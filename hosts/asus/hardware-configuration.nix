@@ -17,7 +17,7 @@
       availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
       kernelModules = ["xe"];
     };
-    kernelModules = ["kvm-intel"];
+    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi"];
     kernelParams = [
       "xe.force_probe=7d55"
       "xe.enable_psr=1"

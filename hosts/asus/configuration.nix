@@ -46,23 +46,21 @@
   services.thermald.enable = true;
 
   services.power-profiles-daemon.enable = false;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "balance_power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      # CPU_MIN_PERF_ON_AC = 0;
-      # CPU_MAX_PERF_ON_AC = 100;
-      # CPU_MIN_PERF_ON_BAT = 0;
-      # CPU_MAX_PERF_ON_BAT = 20;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 80; # 80 and below it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 90; # 90 and above it stops charging
+  # Enable auto-cpu-freq
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      energy_performance_preference = "balance_performance";
+      energy_perf_bias = "balance_performance";
+      turbo = "auto";
+    };
+    battery = {
+      governor = "ondemand";
+      energy_performance_preference = "balance_power";
+      energy_perf_bias = "balance_power";
+      turbo = "auto";
     };
   };
 

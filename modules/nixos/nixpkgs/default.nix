@@ -39,6 +39,22 @@
       flake-registry = "";
       # Workaround for https://github.com/NixOS/nix/issues/9574
       nix-path = config.nix.nixPath;
+
+      substituters = [
+        "https://cache.xinux.uz"
+        "https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University - best for Asia
+        "https://mirrors.ustc.edu.cn/nix-channels/store" # USTC backup mirror
+        "https://cache.nixos.org" # Official global cache
+        "https://nix-community.cachix.org" # Community packages
+        # "https://hyprland.cachix.org"
+        # "https://aseipp-nix-cache.global.ssl.fastly.net"
+      ];
+      http-connections = 128;
+      max-substitution-jobs = 128;
+      max-jobs = "auto";
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
     };
     # Opinionated: disable channels
     channel.enable = false;
