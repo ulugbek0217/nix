@@ -64,10 +64,12 @@
     };
   };
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 200;
-  };
+  # zramSwap = {
+  #   enable = true;
+  #   memoryPercent = 100;
+  # };
+
+  services.earlyoom.enable = true;
 
   services.printing.enable = true;
   programs.firefox.enable = true;

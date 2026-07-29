@@ -4,3 +4,4 @@ result/
 .zed/
 *.blank
 result
+nix.conf

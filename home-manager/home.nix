@@ -28,9 +28,9 @@
 
     # List of user's gui apps
     packages = with pkgs; [
-      telegram-desktop
+      unstable.telegram-desktop
       discord
-      google-chrome
+      unstable.google-chrome
       onlyoffice-desktopeditors
       fastfetch
       peazip
@@ -39,9 +39,11 @@
       protonup-qt
       mission-center
       qbittorrent
-      unstable.insomnia
       obsidian
-      element-desktop
+      unstable.element-desktop
+      bruno
+      unstable.tableplus
+      openvpn
     ];
   };
 

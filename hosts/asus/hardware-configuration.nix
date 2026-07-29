@@ -16,14 +16,29 @@
     initrd = {
       availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
       kernelModules = ["xe"];
+      systemd.enable = true;
     };
-    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi"];
+    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi" "zstd" "zsmalloc"];
     kernelParams = [
       "xe.force_probe=7d55"
       "xe.enable_psr=1"
       "intel_idle.max_cstate=9"
       "i915.force_probe=!7d55"
     ];
+
+    zswap = {
+      enable = true;
+      compressor = "zstd";
+      zpool = "zsmalloc";
+      maxPoolPercent = 40;
+    };
+
+    kernel.sysctl = {
+      "vm.swappiness" = 60;
+      # "vm.watermark_scale_factor" = 125;
+      "vm.watermark_boost_factor" = 0;
+      # "vm.page-cluster" = 0;
+    };
 
     extraModulePackages = [];
   };
