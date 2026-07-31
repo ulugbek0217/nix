@@ -18,7 +18,7 @@
       kernelModules = ["xe"];
       systemd.enable = true;
     };
-    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi" "zstd" "zsmalloc"];
+    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi" "zstd" "zsmalloc" "hid_apple"];
     kernelParams = [
       "xe.force_probe=7d55"
       "xe.enable_psr=1"
@@ -30,7 +30,7 @@
       enable = true;
       compressor = "zstd";
       zpool = "zsmalloc";
-      maxPoolPercent = 40;
+      maxPoolPercent = 60;
     };
 
     kernel.sysctl = {
@@ -39,6 +39,10 @@
       "vm.watermark_boost_factor" = 0;
       # "vm.page-cluster" = 0;
     };
+
+    extraModprobeConfig = ''
+      options hid_apple fnmode=2
+    '';
 
     extraModulePackages = [];
   };

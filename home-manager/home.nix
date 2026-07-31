@@ -29,7 +29,6 @@
     # List of user's gui apps
     packages = with pkgs; [
       unstable.telegram-desktop
-      discord
       unstable.google-chrome
       onlyoffice-desktopeditors
       fastfetch
@@ -43,7 +42,7 @@
       unstable.element-desktop
       bruno
       unstable.tableplus
-      openvpn
+      easyeffects
     ];
   };
 
