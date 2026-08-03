@@ -22,13 +22,11 @@
     homeDirectory = "/home/ulugbek";
 
     sessionVariables = {
-      # Let home-manager handle XDG_DATA_DIRS automatically
-      # If you need to add custom paths, append them instead of replacing
     };
 
     # List of user's gui apps
     packages = with pkgs; [
-      unstable.telegram-desktop
+      telegram-desktop
       unstable.google-chrome
       onlyoffice-desktopeditors
       fastfetch

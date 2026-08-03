@@ -16,5 +16,7 @@
     wget
     time
     sbctl
+    exfatprogs
+    ncdu
   ];
 }

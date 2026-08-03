@@ -1,11 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    # Dasturlar ko'p so'raydigan standart kutubxonalar
     stdenv.cc.cc
     zlib
     fuse3
@@ -17,6 +12,12 @@
     glibc
     util-linux
     glib
-    # Agar biror dastur kutubxona topolmasa, shu ro'yxatga qo'shasiz
+    freetype
+    fontconfig
+    wayland
+    gtk3
+    libxext
+    libx11
+    dbus
   ];
 }
