@@ -34,8 +34,8 @@
     };
 
     kernel.sysctl = {
-      "vm.swappiness" = 60;
-      # "vm.watermark_scale_factor" = 125;
+      "vm.swappiness" = 40;
+      "vm.watermark_scale_factor" = 125;
       "vm.watermark_boost_factor" = 0;
       # "vm.page-cluster" = 0;
     };
