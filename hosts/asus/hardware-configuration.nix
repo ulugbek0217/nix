@@ -30,7 +30,7 @@
       enable = true;
       compressor = "zstd";
       zpool = "zsmalloc";
-      maxPoolPercent = 60;
+      maxPoolPercent = 30;
     };
 
     kernel.sysctl = {

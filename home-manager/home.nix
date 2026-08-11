@@ -41,6 +41,7 @@
       bruno
       unstable.tableplus
       easyeffects
+      apache-directory-studio
     ];
   };
 

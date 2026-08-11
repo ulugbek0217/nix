@@ -45,6 +45,7 @@
   services.xserver.videoDrivers = ["modesetting"];
   services.thermald.enable = true;
 
+  powerManagement.enable = false;
   services.power-profiles-daemon.enable = false;
 
   # Enable auto-cpu-freq
@@ -52,8 +53,9 @@
   services.auto-cpufreq.settings = {
     charger = {
       governor = "performance";
-      energy_performance_preference = "balance_performance";
-      energy_perf_bias = "balance_performance";
+      energy_performance_preference = "performance";
+      energy_perf_bias = "performance";
+      platform_profile = "performance";
       turbo = "auto";
     };
     battery = {

@@ -41,7 +41,7 @@
       nix-path = config.nix.nixPath;
 
       substituters = [
-        "https://cache.xinux.uz?priority=1" # Uzbek Xinux mirror
+        "https://cache.xinux.uz?priority=100" # Uzbek Xinux mirror
         "https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University - best for Asia
         "https://mirrors.ustc.edu.cn/nix-channels/store" # USTC backup mirror
         "https://cache.nixos.org" # Official global cache
