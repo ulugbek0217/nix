@@ -81,7 +81,7 @@
           # > Our main nixos configuration file <
           ./hosts/msi/configuration.nix
           lanzaboote.nixosModules.lanzaboote
-          inputs.home-manager.nixosModules.home-manager
+          # inputs.home-manager.nixosModules.home-manager
         ];
       };
       asus = nixpkgs.lib.nixosSystem {

@@ -12,7 +12,7 @@
     outputs.homeModules.zed
     outputs.homeModules.zsh
     outputs.homeModules.dconf
-    outputs.homeModules.nixpkgs
+    # outputs.homeModules.nixpkgs
     outputs.homeModules.vscode
     outputs.homeModules.obs-studio
   ];
@@ -21,8 +21,7 @@
     username = "ulugbek";
     homeDirectory = "/home/ulugbek";
 
-    sessionVariables = {
-    };
+    sessionVariables = {};
 
     # List of user's gui apps
     packages = with pkgs; [
@@ -44,8 +43,6 @@
       apache-directory-studio
     ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # This is important for GNOME to find applications
   targets.genericLinux.enable = false;

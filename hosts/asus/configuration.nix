@@ -1,6 +1,7 @@
 {
   inputs,
   outputs,
+  lib,
   ...
 }: {
   imports = [
@@ -44,8 +45,9 @@
   services.flatpak.enable = true;
   services.xserver.videoDrivers = ["modesetting"];
   services.thermald.enable = true;
+  services.upower.enable = lib.mkForce true;
 
-  powerManagement.enable = false;
+  # powerManagement.enable = false;
   services.power-profiles-daemon.enable = false;
 
   # Enable auto-cpu-freq

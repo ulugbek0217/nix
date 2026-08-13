@@ -1,7 +1,7 @@
 {...}: {
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
-      panel-run-dialog = [""]; # Освобождаем Alt+F2 для медиа-клавиши
+      panel-run-dialog = ["<Super>r"]; # Освобождаем Alt+F2 для медиа-клавиши
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       volume-step = 2;

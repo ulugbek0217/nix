@@ -31,10 +31,12 @@
   services.dbus.enable = true;
 
   # Ensure XDG portals are properly configured for GNOME
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gnome];
-    config.common.default = "*";
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gnome];
+      config.common.default = "*";
+    };
   };
 
   # GNOME-specific packages
@@ -43,6 +45,8 @@
     gnome-extension-manager
     dconf-editor
     gnomeExtensions.vitals
+    desktop-file-utils
+    gnomeExtensions.appindicator
   ];
 
   programs.dconf.enable = true;
@@ -55,21 +59,21 @@
     totem
   ];
 
-  environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
-    pkgs.gst_all_1.gst-plugins-good
-    pkgs.gst_all_1.gst-plugins-bad
-    pkgs.gst_all_1.gst-plugins-ugly
-    pkgs.gst_all_1.gst-libav
-  ];
-
   # Ensure proper environment for desktop files
   environment.sessionVariables = {
+    NIXOS_OZONE_HLWM = "1";
     # These help GNOME find applications
     XDG_DATA_DIRS = [
       "/run/current-system/sw/share"
-      "$HOME/.nix-profile/share"
       "/var/lib/flatpak/exports/share"
       "/home/ulugbek/.local/share/flatpak/exports/share"
+    ];
+
+    GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+      pkgs.gst_all_1.gst-plugins-good
+      pkgs.gst_all_1.gst-plugins-bad
+      pkgs.gst_all_1.gst-plugins-ugly
+      pkgs.gst_all_1.gst-libav
     ];
   };
 }
