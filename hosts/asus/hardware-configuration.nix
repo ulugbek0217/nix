@@ -12,6 +12,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  hardware.facter = {
+    enable = true;
+    reportPath = ./facter.json;
+  };
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
@@ -26,19 +30,19 @@
       "i915.force_probe=!7d55"
     ];
 
-    zswap = {
-      enable = true;
-      compressor = "zstd";
-      zpool = "zsmalloc";
-      maxPoolPercent = 30;
-    };
+    # zswap = {
+    #   enable = true;
+    #   compressor = "zstd";
+    #   zpool = "zsmalloc";
+    #   maxPoolPercent = 30;
+    # };
 
-    kernel.sysctl = {
-      "vm.swappiness" = 40;
-      "vm.watermark_scale_factor" = 125;
-      "vm.watermark_boost_factor" = 0;
-      # "vm.page-cluster" = 0;
-    };
+    # kernel.sysctl = {
+    #   "vm.swappiness" = 40;
+    #   "vm.watermark_scale_factor" = 125;
+    #   "vm.watermark_boost_factor" = 0;
+    #   # "vm.page-cluster" = 0;
+    # };
 
     extraModprobeConfig = ''
       options hid_apple fnmode=2
