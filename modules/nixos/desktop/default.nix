@@ -13,9 +13,8 @@
     desktopManager.gnome = {
       enable = true;
       extraGSettingsOverrides = ''
-        [org.gnome.mutter.wayland]
-        xwayland-allow-grabs=true
-        xwayland-grab-access-rules=['*']
+        [org.gnome.shell]
+        enabled-extensions=['Vitals@CoreCoding.com', 'appindicatorsupport@rgcjonas.gmail.com', 'dash-to-dock@micxgx.gmail.com']
       '';
     };
 
@@ -47,6 +46,7 @@
     gnomeExtensions.vitals
     desktop-file-utils
     gnomeExtensions.appindicator
+    gnomeExtensions.dash-to-dock
   ];
 
   programs.dconf.enable = true;
