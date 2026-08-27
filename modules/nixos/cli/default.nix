@@ -18,5 +18,8 @@
     sbctl
     exfatprogs
     ncdu
+    vim
+    appimage-run
+    nix-fast-build
   ];
 }

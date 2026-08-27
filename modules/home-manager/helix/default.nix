@@ -28,7 +28,6 @@
       language-server.gopls = {
         command = "gopls";
         config = {
-          # Screenshotdagi xatolikni oldini olish uchun ba'zan konfiguratsiyani tozalash kerak
           formatting.gofumpt = true;
           ui.diagnostic.staticcheck = true;
         };
@@ -84,7 +83,6 @@
       };
 
       keys.normal = {
-        # Easy window movement
         "C-left" = "jump_view_left";
         "C-right" = "jump_view_right";
         "C-up" = "jump_view_up";
@@ -100,17 +98,14 @@
 
     extraPackages = with pkgs;
       [
-        #-- go
         go
-        gopls # Go language server
-        gotools # goimports, godoc, etc.
+        gopls
+        gotools
         gomodifytags
         impl
-        delve # debugger
+        delve
         golangci-lint
-        # golangci-lint-langserver
 
-        #-- python
         (python3.withPackages (ps:
           with ps; [
             black
@@ -121,63 +116,53 @@
         pyright
         ruff
 
-        #-- c/c++
         cmake
         cmake-language-server
         gnumake
         checkmake
-        gcc # c/c++ compiler, required by nvim-treesitter!
-        llvmPackages.clang-unwrapped # c/c++ tools with clang-tools such as clangd
+        gcc
+        llvmPackages.clang-unwrapped
         lldb
 
-        #-- rust
         rust-analyzer
-        cargo # rust package manager
+        cargo
         rustfmt
         lldb_19
 
-        #-- nix
         nixd
-        statix # Lints and suggestions for the nix programming language
-        deadnix # Find and remove unused code in .nix source files
-        alejandra # Nix Code Formatter
+        statix
+        deadnix
+        alejandra
 
-        #-- retardscript
         deno
         typescript-language-server
 
-        #-- rubbish
         ruby
         solargraph
 
-        #-- bash
         bash-language-server
         shellcheck
         shfmt
 
-        #-- CloudNative
         emmet-ls
         jsonnet
         jsonnet-language-server
 
-        #-- Others
-        taplo # TOML language server / formatter / validator
+        taplo
         yaml-language-server
         sqls
-        sqlfluff # SQL linter
-        actionlint # GitHub Actions linter
+        sqlfluff
+        actionlint
 
-        #-- Misc
-        tree-sitter # common language parser/highlighter
-        marksman # language server for markdown
-        glow # markdown previewer
+        tree-sitter
+        marksman
+        glow
         fzf
       ]
       ++ (
         lib.optionals
         (!pkgs.stdenv.hostPlatform.isDarwin)
         [
-          #-- verilog / systemverilog
           verible
           gdb
         ]

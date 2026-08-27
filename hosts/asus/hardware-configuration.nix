@@ -7,7 +7,8 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -18,11 +19,24 @@
   };
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod"];
-      kernelModules = ["xe"];
+      availableKernelModules = [
+        "xhci_pci"
+        "thunderbolt"
+        "nvme"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = [ "xe" ];
       systemd.enable = true;
     };
-    kernelModules = ["kvm-intel" "asus_wmi" "asus_nb_wmi" "zstd" "zsmalloc" "hid_apple"];
+    kernelModules = [
+      "kvm-intel"
+      "asus_wmi"
+      "asus_nb_wmi"
+      "zstd"
+      "zsmalloc"
+      "hid_apple"
+    ];
     kernelParams = [
       "xe.force_probe=7d55"
       "xe.enable_psr=1"
@@ -30,53 +44,63 @@
       "i915.force_probe=!7d55"
     ];
 
-    # zswap = {
-    #   enable = true;
-    #   compressor = "zstd";
-    #   zpool = "zsmalloc";
-    #   maxPoolPercent = 30;
-    # };
+    zswap = {
+      enable = true;
+      compressor = "zstd";
+      zpool = "zsmalloc";
+      maxPoolPercent = 40;
+    };
 
-    # kernel.sysctl = {
-    #   "vm.swappiness" = 40;
-    #   "vm.watermark_scale_factor" = 125;
-    #   "vm.watermark_boost_factor" = 0;
-    #   # "vm.page-cluster" = 0;
-    # };
+    kernel.sysctl = {
+      "vm.swappiness" = 30;
+      "vm.watermark_scale_factor" = 125;
+      "vm.watermark_boost_factor" = 0;
+      "vm.page-cluster" = 0;
+    };
 
     extraModprobeConfig = ''
       options hid_apple fnmode=2
     '';
 
-    extraModulePackages = [];
+    extraModulePackages = [ ];
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
     fsType = "btrfs";
-    options = ["subvol=@"];
+    options = [ "subvol=@" ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
     fsType = "btrfs";
-    options = ["subvol=@home"];
+    options = [ "subvol=@home" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/AC99-089E";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946";}
+    { device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946"; }
   ];
 
   fileSystems."/mnt/hdd" = {
     device = "/dev/disk/by-uuid/748C0F7E8C0F3A5E";
     fsType = "ntfs";
-    options = ["nofail" "defaults" "uid=1000" "gid=100" "umask=0022" "locale=en_US.utf8"];
+    options = [
+      "nofail"
+      "defaults"
+      "uid=1000"
+      "gid=100"
+      "umask=0022"
+      "locale=en_US.utf8"
+    ];
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

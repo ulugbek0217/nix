@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   config,
   ...
@@ -25,6 +24,7 @@
     "docker-compose"
     "alejandra"
     "one-dark-pro"
+    "cargo-tom"
   ];
 
   settings = {
@@ -132,8 +132,8 @@
 
     theme = {
       mode = "system";
-      light = "One Light Pro";
-      dark = "One Dark Pro";
+      light = "One Light";
+      dark = "Catppuccin Mocha";
     };
     icon_theme = "Material Icon Theme";
 
@@ -156,7 +156,6 @@
 
     inlay_hints = {
       enabled = true;
-      # show_background = true;
     };
 
     title_bar = {

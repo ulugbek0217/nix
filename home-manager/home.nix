@@ -38,9 +38,10 @@
       obsidian
       unstable.element-desktop
       bruno
-      unstable.tableplus
+      tableplus
       easyeffects
       apache-directory-studio
+      unstable.ayugram-desktop
     ];
   };
 

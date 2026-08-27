@@ -11,6 +11,7 @@
 
         ms-azuretools.vscode-docker
         jnoortheen.nix-ide
+        bbenoist.nix
         tamasfe.even-better-toml
         ms-vscode.makefile-tools
 
@@ -34,7 +35,8 @@
     profiles.default.userSettings = {
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'FiraCode Nerd Font', 'Fira Code', monospace";
       "editor.fontLigatures" = true;
-      "editor.fontSize" = 16;
+      "editor.fontSize" = 14;
+      "terminal.integrated.fontWeight" = 500;
 
       "workbench.colorTheme" = "One Dark Pro";
       "workbench.iconTheme" = "material-icon-theme";
@@ -64,11 +66,6 @@
             "home-manager" = {
               "expr" = "(builtins.getFlake \"/home/ulugbek/.config/nix\").homeConfigurations.\"ulugbek@asus\".options";
             };
-          };
-        };
-        "nil" = {
-          "formatting" = {
-            "command" = ["nixfmt"];
           };
         };
       };

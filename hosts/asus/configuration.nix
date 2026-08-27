@@ -68,10 +68,10 @@
     };
   };
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
-  };
+  # zramSwap = {
+  #   enable = true;
+  #   memoryPercent = 100;
+  # };
 
   services.earlyoom.enable = true;
 

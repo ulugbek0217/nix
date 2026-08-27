@@ -34,7 +34,7 @@
     portal = {
       enable = true;
       extraPortals = [pkgs.xdg-desktop-portal-gnome];
-      config.common.default = "*";
+      # config.common.default = "*";
     };
   };
 
@@ -47,6 +47,7 @@
     desktop-file-utils
     gnomeExtensions.appindicator
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.tiling-shell
   ];
 
   programs.dconf.enable = true;
@@ -62,7 +63,6 @@
   # Ensure proper environment for desktop files
   environment.sessionVariables = {
     NIXOS_OZONE_HLWM = "1";
-    # These help GNOME find applications
     XDG_DATA_DIRS = [
       "/run/current-system/sw/share"
       "/var/lib/flatpak/exports/share"
@@ -74,6 +74,9 @@
       pkgs.gst_all_1.gst-plugins-bad
       pkgs.gst_all_1.gst-plugins-ugly
       pkgs.gst_all_1.gst-libav
+      pkgs.gst_all_1.gst-plugins-rs
+      pkgs.gst_all_1.gstreamer
+      pkgs.gst_all_1.gst-plugins-base
     ];
   };
 }
