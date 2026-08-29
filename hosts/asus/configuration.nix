@@ -47,6 +47,8 @@
   services.thermald.enable = true;
   services.upower.enable = lib.mkForce true;
 
+  services.tailscale.enable = true;
+
   # powerManagement.enable = false;
   services.power-profiles-daemon.enable = false;
 
@@ -56,15 +58,16 @@
     charger = {
       governor = "performance";
       energy_performance_preference = "performance";
-      energy_perf_bias = "performance";
       platform_profile = "performance";
-      turbo = "auto";
+      turbo = "always";
+      platform_profile_strict = true;
     };
     battery = {
       governor = "ondemand";
-      energy_performance_preference = "balance_power";
-      energy_perf_bias = "balance_power";
+      energy_performance_preference = "balance_performance";
+      platform_profile = "balanced";
       turbo = "auto";
+      platform_profile_strict = true;
     };
   };
 

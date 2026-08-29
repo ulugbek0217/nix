@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
+    package = pkgs.unstable.vscode;
 
     profiles.default.extensions = with pkgs.vscode-extensions;
       [
@@ -36,14 +37,23 @@
       "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'FiraCode Nerd Font', 'Fira Code', monospace";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 14;
+      "editor.fontWeight" = 500;
       "terminal.integrated.fontWeight" = 500;
 
       "workbench.colorTheme" = "One Dark Pro";
       "workbench.iconTheme" = "material-icon-theme";
 
       "editor.formatOnSave" = true;
-      "editor.bracketPairColorization.enabled" = true;
+      "editor.bracketPairColorization.enabled" = false;
       "editor.guides.bracketPairs" = "active";
+
+      "editor.semanticTokenColorCustomizations" = {
+        "enabled" = true;
+        "rules" = {
+          "*.mutable" = {"underline" = false;};
+          "*.readonly" = {"underline" = false;};
+        };
+      };
 
       "rust-analyzer.server.path" = "rust-analyzer";
 

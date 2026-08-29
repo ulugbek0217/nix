@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{pkgs, ...}: let
   extensions = [
     "env"
     "glsl"
@@ -35,9 +31,6 @@
       diagnostics = false;
     };
 
-    detect_indentation = false;
-    tab_size = 4;
-
     show_edit_predictions = false;
 
     node = {
@@ -50,6 +43,14 @@
         format_on_save = "on";
         use_on_type_format = true;
         remove_trailing_whitespace_on_save = true;
+      };
+
+      JavaScript = {
+        format_on_save = "on";
+      };
+
+      TypeScript = {
+        format_on_save = "on";
       };
 
       Nix = {
@@ -81,54 +82,12 @@
         };
       };
 
-      rust-analyzer = {
-        binary = {
-          ignore_system_version = false;
-        };
-        initialization_options = {
-          check = {
-            command = "clippy";
-          };
-        };
-      };
-
-      deno = {
-        binary = {
-          ignore_system_version = false;
-        };
-      };
-
-      solargraph = {
-        binary = {
-          ignore_system_version = false;
-        };
-        initialization_options = {
-          diagnostics = true;
-          formatting = true;
-        };
-      };
-
-      gopls = {
-        binary = {
-          path = "gopls";
-        };
-        settings = {
-          hints = {
-            assignVariableTypes = true;
-            compositeLiteralFields = true;
-            parameterNames = true;
-          };
-        };
-      };
-
       clangd = {
-        arguments = [
-          "--fallback-style={BasedOnStyle: Google, IndentWidth: 4, TabWidth: 4}"
-        ];
+        initialization_options = {
+          fallbackFlags = ["-style=Google"];
+        };
       };
     };
-
-    load_direnv = "direct";
 
     theme = {
       mode = "system";
@@ -159,15 +118,11 @@
     };
 
     title_bar = {
-      show_branch_icon = true;
+      show_branch_status_icon = true;
     };
 
     collaboration_panel = {
       button = false;
-    };
-
-    chat_panel = {
-      button = "never";
     };
 
     agent = {
@@ -181,14 +136,7 @@ in {
       inherit extensions;
       userSettings = settings;
       installRemoteServer = true;
-      package = pkgs.zed-editor;
-      extraPackages = with pkgs;
-        [
-          gopls
-          gotools
-          delve
-        ]
-        ++ config.programs.helix.extraPackages;
+      package = pkgs.unstable.zed-editor;
     };
   };
 }

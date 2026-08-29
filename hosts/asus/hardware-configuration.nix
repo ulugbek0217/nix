@@ -7,8 +7,7 @@
   pkgs,
   modulesPath,
   ...
-}:
-{
+}: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -26,7 +25,7 @@
         "usb_storage"
         "sd_mod"
       ];
-      kernelModules = [ "xe" ];
+      kernelModules = ["xe"];
       systemd.enable = true;
     };
     kernelModules = [
@@ -48,11 +47,11 @@
       enable = true;
       compressor = "zstd";
       zpool = "zsmalloc";
-      maxPoolPercent = 40;
+      maxPoolPercent = 50;
     };
 
     kernel.sysctl = {
-      "vm.swappiness" = 30;
+      "vm.swappiness" = 50;
       "vm.watermark_scale_factor" = 125;
       "vm.watermark_boost_factor" = 0;
       "vm.page-cluster" = 0;
@@ -62,19 +61,19 @@
       options hid_apple fnmode=2
     '';
 
-    extraModulePackages = [ ];
+    extraModulePackages = [];
   };
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
     fsType = "btrfs";
-    options = [ "subvol=@" ];
+    options = ["subvol=@"];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
     fsType = "btrfs";
-    options = [ "subvol=@home" ];
+    options = ["subvol=@home"];
   };
 
   fileSystems."/boot" = {
@@ -87,7 +86,7 @@
   };
 
   swapDevices = [
-    { device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946"; }
+    {device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946";}
   ];
 
   fileSystems."/mnt/hdd" = {
