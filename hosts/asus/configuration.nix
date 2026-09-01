@@ -59,11 +59,14 @@
       governor = "performance";
       energy_performance_preference = "performance";
       platform_profile = "performance";
-      turbo = "always";
+      turbo = "auto";
       platform_profile_strict = true;
+      enable_thresholds = true;
+      start_threshold = 75;
+      stop_threshold = 80;
     };
     battery = {
-      governor = "ondemand";
+      governor = "powersave";
       energy_performance_preference = "balance_performance";
       platform_profile = "balanced";
       turbo = "auto";
@@ -76,7 +79,12 @@
   #   memoryPercent = 100;
   # };
 
-  services.earlyoom.enable = true;
+  services.earlyoom = {
+    enable = true;
+    enableNotifications = true;
+    freeMemThreshold = 5;
+    freeSwapThreshold = 5;
+  };
 
   services.printing.enable = true;
   programs.firefox.enable = true;
