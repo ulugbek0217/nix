@@ -91,6 +91,13 @@
           lanzaboote.nixosModules.lanzaboote
         ];
       };
+      waffle = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/waffle/configuration.nix
+          lanzaboote.nixosModules.lanzaboote
+        ];
+      };
     };
 
     # Standalone home-manager configuration entrypoint
@@ -107,6 +114,15 @@
         ];
       };
       "ulugbek@msi" = home-manager.lib.homeManagerConfiguration {
+        # Home-manager requires 'pkgs' instance
+        pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./home-manager/home.nix
+        ];
+      };
+      "ulugbek@waffle" = home-manager.lib.homeManagerConfiguration {
         # Home-manager requires 'pkgs' instance
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure
         extraSpecialArgs = {inherit inputs outputs;};

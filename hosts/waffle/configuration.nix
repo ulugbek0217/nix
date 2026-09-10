@@ -12,7 +12,7 @@
     outputs.nixosModules.desktop
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
-    outputs.nixosModules.steam
+    # outputs.nixosModules.steam
     outputs.nixosModules.packages
     outputs.nixosModules.lutris
     outputs.devModules
@@ -25,7 +25,7 @@
   ];
 
   networking = {
-    hostName = "asus";
+    hostName = "waffle";
     networkmanager.enable = true;
   };
 
@@ -36,50 +36,13 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
   services.flatpak.enable = true;
   services.xserver.videoDrivers = ["modesetting"];
   services.thermald.enable = true;
   services.upower.enable = lib.mkForce true;
-
   services.tailscale.enable = true;
-
-  # powerManagement.enable = false;
-  services.power-profiles-daemon.enable = false;
-
   services.fwupd.enable = true;
-
-  # Enable auto-cpu-freq
-  services.auto-cpufreq.enable = true;
-  services.auto-cpufreq.settings = {
-    charger = {
-      governor = "performance";
-      energy_performance_preference = "performance";
-      platform_profile = "performance";
-      turbo = "auto";
-      platform_profile_strict = true;
-      enable_thresholds = true;
-      start_threshold = 75;
-      stop_threshold = 80;
-    };
-    battery = {
-      governor = "powersave";
-      energy_performance_preference = "balance_performance";
-      platform_profile = "balanced";
-      turbo = "auto";
-      platform_profile_strict = true;
-    };
-  };
-
-  # zramSwap = {
-  #   enable = true;
-  #   memoryPercent = 100;
-  # };
+  services.printing.enable = true;
 
   services.earlyoom = {
     enable = true;
@@ -88,7 +51,6 @@
     freeSwapThreshold = 5;
   };
 
-  services.printing.enable = true;
   programs.firefox.enable = true;
   programs.direnv.enable = true;
 
@@ -106,5 +68,5 @@
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.11"; # Did you read the comment?
+  system.stateVersion = "26.05"; # Did you read the comment?
 }

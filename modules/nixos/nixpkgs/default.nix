@@ -41,11 +41,11 @@
       nix-path = config.nix.nixPath;
 
       substituters = [
-        "https://cache.xinux.uz?priority=100" # Uzbek Xinux mirror
-        "https://mirror.sjtu.edu.cn/nix-channels/store" # Shanghai Jiao Tong University - best for Asia
-        "https://mirrors.ustc.edu.cn/nix-channels/store" # USTC backup mirror
+        "https://cache.xinux.uz?priority=1" # Uzbek Xinux mirror
+        "https://mirror.sjtu.edu.cn/nix-channels/store?priority=2" # Shanghai Jiao Tong University - best for Asia
+        "https://mirrors.ustc.edu.cn/nix-channels/store?priority=3" # USTC backup mirror
+        "https://nix-community.cachix.org?priority=4" # Community packages
         "https://cache.nixos.org" # Official global cache
-        "https://nix-community.cachix.org" # Community packages
       ];
       http-connections = 128;
       max-substitution-jobs = 128;
