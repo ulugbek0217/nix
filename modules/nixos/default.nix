@@ -11,7 +11,7 @@
   fonts = import ./fonts;
   zsh = import ./zsh;
   steam = import ./steam;
-  cli = import ./cli;
+  packages = import ./packages;
   lutris = import ./lutris;
   nixld = import ./nixld;
   virtualization = ./virtualization;

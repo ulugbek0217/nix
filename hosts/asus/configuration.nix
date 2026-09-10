@@ -13,7 +13,7 @@
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
     outputs.nixosModules.steam
-    outputs.nixosModules.cli
+    outputs.nixosModules.packages
     outputs.nixosModules.lutris
     outputs.devModules
     outputs.nixosModules.nixld

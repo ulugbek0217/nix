@@ -21,5 +21,6 @@
     vim
     appimage-run
     nix-fast-build
+    inetutils
   ];
 }

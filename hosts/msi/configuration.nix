@@ -17,7 +17,7 @@
     outputs.nixosModules.zsh
     outputs.nixosModules.fonts
     outputs.nixosModules.steam
-    outputs.nixosModules.cli
+    outputs.nixosModules.packages
     outputs.devModules
 
     inputs.home-manager.nixosModules.home-manager
