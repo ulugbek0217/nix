@@ -20,6 +20,8 @@
         "nvme"
         "usb_storage"
         "sd_mod"
+        "usbhid"
+        "ahci"
       ];
       kernelModules = ["xe"];
       systemd.enable = true;
@@ -57,43 +59,32 @@
     extraModulePackages = [];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
-    fsType = "btrfs";
-    options = ["subvol=@"];
-  };
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
+      fsType = "btrfs";
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/3d5ffee0-2cd5-4763-b71c-f13d3856d2bc";
-    fsType = "btrfs";
-    options = ["subvol=@home"];
-  };
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/AC99-089E";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/A854-DF53";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
+
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/87c1bd27-4bfa-4af4-a3f9-4875437008f6"; }
     ];
-  };
-
-  swapDevices = [
-    {device = "/dev/disk/by-uuid/c88b5863-8caa-4fcf-9a41-1c82f8112946";}
-  ];
-
-  fileSystems."/mnt/hdd" = {
-    device = "/dev/disk/by-uuid/748C0F7E8C0F3A5E";
-    fsType = "ntfs";
-    options = [
-      "nofail"
-      "defaults"
-      "uid=1000"
-      "gid=100"
-      "umask=0022"
-      "locale=en_US.utf8"
-    ];
-  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

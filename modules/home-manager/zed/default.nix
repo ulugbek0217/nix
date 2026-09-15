@@ -21,6 +21,7 @@
     "alejandra"
     "one-dark-pro"
     "cargo-tom"
+    "catppuccin"
   ];
 
   settings = {

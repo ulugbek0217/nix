@@ -14,7 +14,6 @@
 
     # NIX
     nixd
-    alejandra
     nix-tree
     nixfmt-tree
     statix
