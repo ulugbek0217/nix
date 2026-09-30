@@ -7,7 +7,8 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -23,7 +24,7 @@
         "usbhid"
         "ahci"
       ];
-      kernelModules = ["xe"];
+      kernelModules = [ "xe" ];
       systemd.enable = true;
     };
     kernelModules = [
@@ -56,35 +57,38 @@
       options hid_apple fnmode=2
     '';
 
-    extraModulePackages = [];
+    extraModulePackages = [ ];
   };
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
-      fsType = "btrfs";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/76382d2d-79fa-4470-b0ab-af180a5f4010";
+    fsType = "btrfs";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/76382d2d-79fa-4470-b0ab-af180a5f4010";
+    fsType = "btrfs";
+    options = [ "subvol=home" ];
+  };
 
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/a201611d-d0b9-494d-8dad-ce8393116dc5";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/76382d2d-79fa-4470-b0ab-af180a5f4010";
+    fsType = "btrfs";
+    options = [ "subvol=nix" ];
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/A854-DF53";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/87c1bd27-4bfa-4af4-a3f9-4875437008f6"; }
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/A0A2-4E6F";
+    fsType = "vfat";
+    options = [
+      "fmask=0077"
+      "dmask=0077"
     ];
+  };
+
+  swapDevices = [
+    { device = "/dev/disk/by-uuid/830c9dcf-5b32-40c5-a07a-30da9a8700d6"; }
+  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

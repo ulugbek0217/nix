@@ -1,11 +1,9 @@
 {
-  inputs,
-  lib,
-  config,
   pkgs,
   outputs,
   ...
-}: {
+}:
+{
   imports = [
     outputs.homeModules.git
     outputs.homeModules.helix
@@ -21,7 +19,7 @@
     username = "ulugbek";
     homeDirectory = "/home/ulugbek";
 
-    sessionVariables = {};
+    sessionVariables = { };
 
     # List of user's gui apps
     packages = with pkgs; [
@@ -42,6 +40,7 @@
       easyeffects
       apache-directory-studio
       unstable.ayugram-desktop
+      easytag
     ];
   };
 

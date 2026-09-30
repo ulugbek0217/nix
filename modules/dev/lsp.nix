@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     # C++
     gcc
@@ -25,13 +25,14 @@
     corepack
 
     # PYTON
-    (python3.withPackages (ps:
-      with ps; [
+    (python3.withPackages (
+      ps: with ps; [
         pip
         virtualenv
         black
         ruff
-      ]))
+      ]
+    ))
 
     # RUST
     unstable.rustc

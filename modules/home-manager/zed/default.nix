@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   extensions = [
     "env"
     "glsl"
@@ -85,7 +86,7 @@
 
       clangd = {
         initialization_options = {
-          fallbackFlags = ["-style=Google"];
+          fallbackFlags = [ "-style=Google" ];
         };
       };
     };
@@ -130,7 +131,8 @@
       enabled = false;
     };
   };
-in {
+in
+{
   config = {
     programs.zed-editor = {
       enable = true;

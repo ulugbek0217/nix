@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscode;
 
-    profiles.default.extensions = with pkgs.vscode-extensions;
+    profiles.default.extensions =
+      with pkgs.vscode-extensions;
       [
         ms-python.python
         golang.go
@@ -50,8 +51,12 @@
       "editor.semanticTokenColorCustomizations" = {
         "enabled" = true;
         "rules" = {
-          "*.mutable" = {"underline" = false;};
-          "*.readonly" = {"underline" = false;};
+          "*.mutable" = {
+            "underline" = false;
+          };
+          "*.readonly" = {
+            "underline" = false;
+          };
         };
       };
 
@@ -67,14 +72,15 @@
       "nix.serverSettings" = {
         "nixd" = {
           "formatting" = {
-            "command" = ["nixfmt"];
+            "command" = [ "nixfmt" ];
           };
           "options" = {
             "nixos" = {
               "expr" = "(builtins.getFlake \"/home/ulugbek/.config/nix\").nixosConfigurations.asus.options";
             };
             "home-manager" = {
-              "expr" = "(builtins.getFlake \"/home/ulugbek/.config/nix\").homeConfigurations.\"ulugbek@asus\".options";
+              "expr" =
+                "(builtins.getFlake \"/home/ulugbek/.config/nix\").homeConfigurations.\"ulugbek@asus\".options";
             };
           };
         };

@@ -2,10 +2,12 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   # resolution = "1920x1080";
   # theme-package = pkgs.callPackage ./theme.nix {};
-in {
+in
+{
   config = {
     # imports = [
     #   inputs.lanzaboote.nixosModules.lanzaboote

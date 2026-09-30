@@ -2,7 +2,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   programs = {
     # Installing zsh for system
     zsh = {
@@ -36,8 +37,8 @@
 
   # System configurations
   environment = {
-    shells = with pkgs; [zsh];
-    pathsToLink = ["/share/zsh"];
-    systemPackages = [inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default];
+    shells = with pkgs; [ zsh ];
+    pathsToLink = [ "/share/zsh" ];
+    systemPackages = [ inputs.home-manager.packages.${pkgs.stdenv.hostPlatform.system}.default ];
   };
 }

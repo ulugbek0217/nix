@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -8,20 +8,27 @@
         {
           name = "rust";
           auto-format = true;
-          formatter = {command = "rustfmt";};
+          formatter = {
+            command = "rustfmt";
+          };
         }
         {
           name = "go";
           auto-format = true;
-          formatter = {command = "goimports";};
-          language-servers = ["gopls"];
+          formatter = {
+            command = "goimports";
+          };
+          language-servers = [ "gopls" ];
         }
         {
           name = "python";
           auto-format = true;
           formatter = {
             command = "black";
-            args = ["--quiet" "-"];
+            args = [
+              "--quiet"
+              "-"
+            ];
           };
         }
       ];
@@ -59,9 +66,14 @@
         };
 
         statusline = {
-          left = ["mode" "spinner" "read-only-indicator" "file-modification-indicator"];
+          left = [
+            "mode"
+            "spinner"
+            "read-only-indicator"
+            "file-modification-indicator"
+          ];
 
-          center = ["file-name"];
+          center = [ "file-name" ];
 
           right = [
             "diagnostics"
@@ -92,11 +104,15 @@
         "C-s" = ":w";
       };
       keys.insert = {
-        "C-s" = [":w " "insert_mode"];
+        "C-s" = [
+          ":w "
+          "insert_mode"
+        ];
       };
     };
 
-    extraPackages = with pkgs;
+    extraPackages =
+      with pkgs;
       [
         go
         gopls
@@ -106,13 +122,14 @@
         delve
         golangci-lint
 
-        (python3.withPackages (ps:
-          with ps; [
+        (python3.withPackages (
+          ps: with ps; [
             black
             # python-lsp-server
             pylsp-rope
             python-lsp-ruff
-          ]))
+          ]
+        ))
         pyright
         ruff
 
@@ -159,13 +176,9 @@
         glow
         fzf
       ]
-      ++ (
-        lib.optionals
-        (!pkgs.stdenv.hostPlatform.isDarwin)
-        [
-          verible
-          gdb
-        ]
-      );
+      ++ (lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [
+        verible
+        gdb
+      ]);
   };
 }

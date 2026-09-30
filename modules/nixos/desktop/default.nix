@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   # Enable GNOME with Wayland
   services = {
     xserver.enable = true;
@@ -33,7 +34,7 @@
   xdg = {
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-gnome];
+      extraPortals = [ pkgs.xdg-desktop-portal-gnome ];
       # config.common.default = "*";
     };
   };
@@ -67,6 +68,7 @@
       "/run/current-system/sw/share"
       "/var/lib/flatpak/exports/share"
       "/home/ulugbek/.local/share/flatpak/exports/share"
+      "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
     ];
 
     GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [

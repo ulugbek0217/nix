@@ -1,18 +1,18 @@
-{...}: {
+{ ... }: {
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
-      panel-run-dialog = ["<Super>r"]; # Освобождаем Alt+F2 для медиа-клавиши
+      panel-run-dialog = [ "<Super>r" ]; # Освобождаем Alt+F2 для медиа-клавиши
     };
     "org/gnome/settings-daemon/plugins/media-keys" = {
       volume-step = 2;
       # Пауза / Воспроизведение
-      play = ["<Alt>F2"];
+      play = [ "<Alt>F2" ];
 
       # Предыдущий трек (из предыдущего шага)
-      previous = ["<Alt>F1"];
+      previous = [ "<Alt>F1" ];
 
       # Следующий трек (из предыдущего шага)
-      next = ["<Alt>F3"];
+      next = [ "<Alt>F3" ];
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
       ];

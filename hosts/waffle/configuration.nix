@@ -3,7 +3,8 @@
   outputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     outputs.nixosModules.boot
     outputs.nixosModules.users.ulugbek
@@ -14,7 +15,7 @@
     outputs.nixosModules.fonts
     # outputs.nixosModules.steam
     outputs.nixosModules.packages
-    outputs.nixosModules.lutris
+    # outputs.nixosModules.lutris
     outputs.devModules
     outputs.nixosModules.nixld
     outputs.nixosModules.virtualization
@@ -37,7 +38,7 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.flatpak.enable = true;
-  services.xserver.videoDrivers = ["modesetting"];
+  services.xserver.videoDrivers = [ "modesetting" ];
   services.thermald.enable = true;
   services.upower.enable = lib.mkForce true;
   services.tailscale.enable = true;
@@ -53,6 +54,14 @@
 
   programs.firefox.enable = true;
   programs.direnv.enable = true;
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableExtensionPack = true;
+    # enableKvm = true;
+  };
+
+  users.extraGroups.vboxusers.members = [ "ulugbek" ];
 
   # Enable the OpenSSH daemon.
   services.openssh = {

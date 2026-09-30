@@ -3,7 +3,8 @@
   outputs,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     outputs.nixosModules.boot
     outputs.nixosModules.users.ulugbek
@@ -43,7 +44,7 @@
   };
 
   services.flatpak.enable = true;
-  services.xserver.videoDrivers = ["modesetting"];
+  services.xserver.videoDrivers = [ "modesetting" ];
   services.thermald.enable = true;
   services.upower.enable = lib.mkForce true;
 

@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # Add Lutris to your system packages
   environment.systemPackages = with pkgs; [
     lutris

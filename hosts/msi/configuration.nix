@@ -4,7 +4,8 @@
   inputs,
   outputs,
   ...
-}: {
+}:
+{
   # You can import other NixOS modules here
   imports = [
     # If you want to use modules your own flake exports (from modules/nixos):
@@ -39,7 +40,7 @@
   };
 
   # NVIDIA driver support
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Set your time zone.
   time = {
