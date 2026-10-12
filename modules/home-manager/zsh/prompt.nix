@@ -8,7 +8,7 @@
     };
   };
 
-  # Zpxide path integration
+  # Zoxide path integration
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
