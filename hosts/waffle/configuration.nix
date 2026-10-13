@@ -2,6 +2,7 @@
   inputs,
   outputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -60,6 +61,8 @@
     enableExtensionPack = true;
     # enableKvm = true;
   };
+
+  environment.systemPackages = [ pkgs.unstable.linuxHeaders ];
 
   users.extraGroups.vboxusers.members = [ "ulugbek" ];
 
